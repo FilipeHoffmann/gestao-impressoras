@@ -1,13 +1,12 @@
-body {
-    height: 100vh;
-}
-
 header {
     width: 100%;
     background-color: #f1f1f1;
 }
 
 footer {
+    height: 40px;
+    position: fixed;
+    bottom: 0;
     width: 100%;
     background-color: #f1f1f1;
 }
@@ -25,8 +24,8 @@ footer {
     justify-content: center;
 }
 
-.info-rodape {
-    display: block;
-    align-content: center;
+#info-rodape {
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
