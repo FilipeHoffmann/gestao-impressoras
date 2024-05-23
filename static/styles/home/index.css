@@ -1,0 +1,32 @@
+body {
+    height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+footer {
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+.container-botao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.titulo-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-rodape {
+    display: block;
+    align-content: center;
+    justify-content: center;
+}
