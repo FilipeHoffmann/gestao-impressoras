@@ -1,5 +1,4 @@
 header {
-
     width: 100%;
     background-color: #f1f1f1;
 }
@@ -10,6 +9,14 @@ footer {
     bottom: 0;
     width: 100%;
     background-color: #f1f1f1;
+}
+
+#botao-aditivo {
+    margin-top: 10px;
+}
+
+#botao-novo-contrato {
+    margin-top: 10px;
 }
 
 .container-botao {

@@ -12,7 +12,8 @@ def index():
 def contratos():
     lista_contratos = contratos_model().consultar_contratos()
     return render_template('/contratos/contratos.html',
-                           contratos = lista_contratos)
+                           contratos = lista_contratos,
+                           ids=lista_contratos)
 
 if __name__ == "__main__":
     app.run(host="192.168.0.159",port=3000,debug=True)

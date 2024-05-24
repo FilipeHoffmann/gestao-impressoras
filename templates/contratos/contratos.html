@@ -15,35 +15,54 @@
     </header>
 
     <main>
-      <div>
+      <div id="botao-novo-contrato">
         <div class="d-grid gap-4 col-3 mx-auto">
           <a class="btn btn-primary " href="" role="button">Novo contrato</a>
         </div>
       </div>
+      <div id="botao-aditivo">
+        <div class="d-grid gap-4 col-3 mx-auto">
+          <a class="btn btn-primary " href="" role="button">Aditivo</a>
+        </div>
+      </div>
 
-      <div class="tabela"> 
-        <table>
-          <thead>
+      <div class="tabela">
+
+        <div id="filtros">
+          <div class="input-group mb-3">
+            <select class="custom-select" id="inputGroupSelect02">
+              <option selected>ID</option>
+              {% for id in ids %}
+                <option value="{{ id[0] }}">{{ id[0] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <table class="table table-striped">
+          <thead class="thead-dark">
               <tr>
-                <th>ID</th>
-                <th>Descrição</th>
-                <th>Data início</th>
-                <th>Data fim</th>
-                <th>Contratada</th>
-                <th>Custo total</th>
-                <th>Editar</th>
-                <th>Excluir</th>
+                <th scope="col">ID</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Data início</th>
+                <th scope="col">Data fim</th>
+                <th scope="col">Contratada</th>
+                <th scope="col">Custo total</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Excluir</th>
               </tr>
           </thead>
           <tbody>
             {% for contrato in contratos %}
             <tr>
-              <td>{{ contrato[0] }}</td>
+              <th scope="row">{{ contrato[0] }}</td>
               <td>{{ contrato[1] }}</td>
               <td>{{ contrato[2] }}</td>
               <td>{{ contrato[3] }}</td>
               <td>{{ contrato[4] }}</td>
-              <td>{{ contrato[5] }}</td>
+              <td>R$ {{ contrato[5] }}</td>
+              <td></td>
+              <td></td>
             </tr>
             {% endfor %}
           </tbody>
