@@ -9,16 +9,16 @@
   </head>
   <body>
     <header>
-        <div class="titulo-cabecalho">
-            <h1>Gestão Impressoras</h1>
-        </div>
+      <div class="titulo-cabecalho">
+        <h1>Gestão Impressoras</h1>
+      </div>
     </header>
 
     <main>
       <div class="container-botao">
         <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href="#" role="button">Contratos</a>
-          <a class="btn btn-primary" href="#" role="button">Produtos</a>
+          <a class="btn btn-primary " href="{{ url_for('contratos') }}" role="button">Contratos</a>
+          <a class="btn btn-primary" href="#" role="button">Impressoras</a>
           <a class="btn btn-primary" href="#" role="button">Faturamento</a>
         </div>
       </div>
@@ -26,7 +26,7 @@
 
     <footer>
       <div id="info-rodape">
-        <p>Desenvolvido por Filipe Hoffmann e Bruno Monteiro</p>
+        <p>Desenvolvido por Filipe Hoffmann, Bruno Monteiro e Ricardo Schutz</p>
       </div>
     </footer>
 
