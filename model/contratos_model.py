@@ -5,7 +5,11 @@ class contratos_model:
         self.lista_contratos = None
         self.listar_todos_contratos = "SELECT * FROM contracts"
         
-    def consultar_contratos(self):
-        bd = conector_banco_de_dados.conector_banco_de_dados(self.listar_todos_contratos)
+    def consultar_contratos(self,query):
+        bd = conector_banco_de_dados.conector_banco_de_dados(query)
         self.lista_contratos = bd.consultar()
         return self.lista_contratos
+    
+    def criar_contrato(self,query):
+        bd = conector_banco_de_dados.conector_banco_de_dados(query)
+        bd.incluir()
