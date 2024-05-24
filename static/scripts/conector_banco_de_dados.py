@@ -1,12 +1,12 @@
 import mysql.connector
 
-class banco_de_dados:
+class conector_banco_de_dados:
     def __init__(self, query: str):
         self.conector_sql = mysql.connector.connect(
             host="localhost",
             user="root",
             password="123321",
-            database="controleimpressoras"
+            database="controleimpressora"
         )
         self.cursor = self.conector_sql.cursor()
         self.query = query
