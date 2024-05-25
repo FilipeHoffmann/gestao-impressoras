@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 from model.contratos_model import contratos_model
 
 app = Flask(__name__)
@@ -10,7 +10,7 @@ def index():
     if request.method == 'GET':
         return render_template('/home/index.html')
     
-@app.route('/contratos',methods=['GET'])
+@app.route('/contratos',methods=['GET','POST'])
 def contratos():
     if request.method == 'GET':
         lista_contratos = contratos_model_instance.consultar_contratos("SELECT * FROM contracts ORDER BY contract_id DESC")
@@ -38,8 +38,13 @@ def editar_contrato(id_contrato):
             WHERE contract_id = '{id_contrato}'
         """
         contratos_model_instance.atualizar_contrato(update_query)
-        mensagem = "Contrato editado!"
-        return render_template('contratos/editar_contrato.html', mensagem = mensagem, contracts_id=id_contrato, contrato=contrato)
+        return redirect(url_for('contratos'))
+    
+@app.route('/contratos/excluir/<int:id_contrato>', methods=['GET'])
+def excluir_contrato(id_contrato):
+    delete_query = f"DELETE FROM contracts WHERE contract_id = {id_contrato}"
+    contratos_model_instance.excluir_contrato(delete_query)
+    return redirect(url_for('contratos'))
         
 @app.route('/contratos/criar', methods=['GET','POST'])
 def criar_contrato():
