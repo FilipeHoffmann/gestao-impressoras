@@ -36,6 +36,7 @@
                 <option value="{{ id[0] }}">{{ id[0] }}</option>
               {% endfor %}
             </select>
+            <a class="btn btn-primary" href="" role="button">Filtrar</a>
           </div>
         </div>
 
@@ -61,8 +62,8 @@
               <td>{{ contrato[3] }}</td>
               <td>{{ contrato[4] }}</td>
               <td>R$ {{ contrato[5] }}</td>
-              <td></td>
-              <td></td>
+              <td><a class="btn btn-warning" href="{{ url_for('editar_contrato', id_contrato=contrato[0]) }}" role="button">Editar</a></td>
+              <td><a class="btn btn-danger" href="" role="button">Excluir</a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -70,7 +71,7 @@
       </div>
       <div class="container-botao">
         <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href=" {{ url_for('index') }}" role="button">Voltar</a>
+          <a class="btn btn-primary" href="{{ url_for('index') }}" role="button">Voltar</a>
         </div>
       </div>
     </main>

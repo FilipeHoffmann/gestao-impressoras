@@ -23,3 +23,9 @@ class conector_banco_de_dados:
         self.conector_sql.commit()
         self.cursor.close()
         self.conector_sql.close()
+        
+    def incluir(self):
+        self.cursor.execute(self.query)
+        self.conector_sql.commit()
+        self.cursor.close()
+        self.conector_sql.close()

@@ -13,3 +13,11 @@ class contratos_model:
     def criar_contrato(self,query):
         bd = conector_banco_de_dados.conector_banco_de_dados(query)
         bd.incluir()
+        
+    def atualizar_contrato(self,query):
+        bd = conector_banco_de_dados.conector_banco_de_dados(query)
+        bd.incluir()
+        
+    def excluir_contrato(self,query):
+        bd = conector_banco_de_dados.conector_banco_de_dados(query)
+        bd.incluir()
