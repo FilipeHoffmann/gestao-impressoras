@@ -18,7 +18,7 @@ class conector_banco_de_dados:
         self.conector_sql.close()
         return self.resultados
     
-    def incluir(self):
+    def alterar_incluir_excluir(self):
         self.cursor.execute(self.query)
         self.conector_sql.commit()
         self.cursor.close()
