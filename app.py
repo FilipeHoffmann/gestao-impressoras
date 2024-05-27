@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template, request
 from controller.contratos import class_contratos
 from controller.aditivos import class_aditivos
 
@@ -61,6 +61,8 @@ def editar_aditivo(id_aditivo):
 def excluir_aditivo(id_aditivo):
     if request.method == "GET":
         return class_aditivos.class_aditivos.excluir_contrato(id_aditivo)
+    
+#Produtos
 
 if __name__ == "__main__":
     app.run(debug=True)
