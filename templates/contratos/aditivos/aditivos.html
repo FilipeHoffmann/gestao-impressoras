@@ -10,19 +10,14 @@
   <body>
     <header>
       <div class="titulo-cabecalho">
-        <h1>Contratos</h1>
+        <h1>Aditivos</h1>
       </div>
     </header>
 
     <main>
-      <div id="botao-novo-contrato">
+      <div id="botao-novo-aditivo">
         <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href="{{ url_for('criar_contrato')}}" role="button">Novo contrato</a>
-        </div>
-      </div>
-      <div id="botao-aditivo">
-        <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href="{{ url_for('aditivos') }}" role="button">Aditivo</a>
+          <a class="btn btn-primary " href="{{ url_for('criar_aditivo') }}" role="button">Novo aditivo</a>
         </div>
       </div>
 
@@ -44,26 +39,24 @@
           <thead class="thead-dark">
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Data início</th>
-                <th scope="col">Data fim</th>
-                <th scope="col">Contratada</th>
-                <th scope="col">Custo total</th>
+                <th scope="col">ID Contrato</th>
+                <th scope="col">Data Prorrogada</th>
+                <th scope="col">Detalhes</th>
+                <th scope="col">Custo Adicional</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
               </tr>
           </thead>
           <tbody>
-            {% for contrato in contratos %}
+            {% for aditivo in aditivos %}
             <tr>
-              <th scope="row">{{ contrato[0] }}</td>
-              <td>{{ contrato[1] }}</td>
-              <td>{{ contrato[2] }}</td>
-              <td>{{ contrato[3] }}</td>
-              <td>{{ contrato[4] }}</td>
-              <td>R$ {{ contrato[5] }}</td>
-              <td><a class="btn btn-warning" href="{{ url_for('editar_contrato', id_contrato=contrato[0]) }}" role="button">Editar</a></td>
-              <td><a class="btn btn-danger" href="{{ url_for('excluir_contrato', id_contrato=contrato[0]) }}" role="button">Excluir</a></td>
+              <th scope="row">{{ aditivo[0] }}</td>
+              <td>{{ aditivo[1] }}</td>
+              <td>{{ aditivo[2] }}</td>
+              <td>{{ aditivo[3] }}</td>
+              <td>R$ {{ aditivo[4] }}</td>
+              <td><a class="btn btn-warning" href="{{ url_for('editar_aditivo', id_aditivo=aditivo[0]) }}" role="button">Editar</a></td>
+              <td><a class="btn btn-danger" href="{{url_for('excluir_aditivo', id_aditivo=aditivo[0])}}" role="button">Excluir</a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -71,7 +64,7 @@
       </div>
       <div class="container-botao">
         <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary" href="{{ url_for('index') }}" role="button">Voltar</a>
+          <a class="btn btn-primary" href="{{ url_for('contratos') }}" role="button">Voltar</a>
         </div>
       </div>
     </main>
