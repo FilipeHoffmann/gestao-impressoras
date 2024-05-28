@@ -78,6 +78,18 @@ def criar_produto():
     elif request.method == "POST":
         return class_produtos.class_produtos.criar_produto()
     
+@app.route("/produtos/editar/<int:id_produto>", methods=['GET','POST'])
+def editar_produto(id_produto):
+    if request.method == "GET":
+        return class_produtos.class_produtos.obter_produto(id_produto)
+    elif request.method == "POST":
+        return class_produtos.class_produtos.editar_produto(id_produto)
+    
+@app.route("/produtos/excluir/<int:id_produto>", methods=['GET'])
+def excluir_produto(id_produto):
+    if request.method == "GET":
+        return class_produtos.class_produtos.excluir_produto(id_produto)
+
 #Impressoras
 @app.route('/impressoras', methods=['GET'])
 def impressoras():
