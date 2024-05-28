@@ -52,12 +52,31 @@ class class_produtos:
         valor_total = request.form["valor_total"]
         id_contratos = request.form["id_contratos"]
         id_aditivos = request.form["id_aditivos"]
-        update_query = f"""
-            UPDATE produtos
-            SET lote = '{lote}', codigo = '{codigo}', descricao = '{descricao}', unidade = '{unidade}', quantidade_mensal = '{quantidade_mensal}', quantidade_anual = '{quantidade_anual}'
-            valor_unitario = '{valor_unitario}', valor_total = '{valor_total}', id_contratos = {id_contratos}, id_aditivos = '{id_aditivos}'
-            WHERE id_produtos = '{id_produto}'
-        """
+        
+        if id_contratos != "" and id_aditivos != "":
+            update_query = f"""
+                UPDATE produtos
+                SET lote = '{lote}', codigo = '{codigo}', descricao = '{descricao}', unidade = '{unidade}', quantidade_mensal = '{quantidade_mensal}', quantidade_anual = '{quantidade_anual}',
+                valor_unitario = '{valor_unitario}', valor_total = '{valor_total}', id_contratos = '{id_contratos}', id_aditivos = '{id_aditivos}'
+                WHERE id_produtos = '{id_produto}'
+            """
+            
+        if id_aditivos == "" and id_contratos != "": 
+            update_query = f"""
+                UPDATE produtos
+                SET lote = '{lote}', codigo = '{codigo}', descricao = '{descricao}', unidade = '{unidade}', quantidade_mensal = '{quantidade_mensal}', quantidade_anual = '{quantidade_anual}',
+                valor_unitario = '{valor_unitario}', valor_total = '{valor_total}', id_contratos = '{id_contratos}'
+                WHERE id_produtos = '{id_produto}'
+            """
+            
+        if id_contratos == "" and id_aditivos == "":
+            update_query = f"""
+                UPDATE produtos
+                SET lote = '{lote}', codigo = '{codigo}', descricao = '{descricao}', unidade = '{unidade}', quantidade_mensal = '{quantidade_mensal}', quantidade_anual = '{quantidade_anual}',
+                valor_unitario = '{valor_unitario}', valor_total = '{valor_total}'
+                WHERE id_produtos = '{id_produto}'
+            """
+        
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
         return redirect(url_for('produtos'))
     
