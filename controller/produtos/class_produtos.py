@@ -23,7 +23,11 @@ class class_produtos:
             valor_total = request.form["valor_total"]
             id_contratos = request.form["id_contratos"]
             id_aditivos = request.form["id_aditivos"]
-            query = f'''INSERT INTO produtos(lote,codigo,descricao,unidade,quantidade_mensal,quantidade_anual,valor_unitario,valor_total,id_contratos,id_aditivos)
+            if id_contratos == "":
+                query = f'''INSERT INTO produtos(lote,codigo,descricao,unidade,quantidade_mensal,quantidade_anual,valor_unitario,valor_total)
+                        VALUES ('{lote}','{codigo}','{descricao}','{unidade}','{quantidade_mensal}','{quantidade_anual}','{valor_unitario}','{valor_total}')'''
+            if id_contratos != "" and id_aditivos != "":
+                query = f'''INSERT INTO produtos(lote,codigo,descricao,unidade,quantidade_mensal,quantidade_anual,valor_unitario,valor_total,id_contratos,id_aditivos)
                         VALUES ('{lote}','{codigo}','{descricao}','{unidade}','{quantidade_mensal}','{quantidade_anual}','{valor_unitario}','{valor_total}','{id_contratos}','{id_aditivos}')'''
             conector_banco_de_dados.conector_banco_de_dados(query).alterar_incluir_excluir()
             mensagem = "Produto adicionado!"
