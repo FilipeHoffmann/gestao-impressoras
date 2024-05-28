@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from controller.contratos import class_contratos
 from controller.aditivos import class_aditivos
+from controller.produtos import class_produtos
 
 app = Flask(__name__)
 
@@ -64,5 +65,17 @@ def excluir_aditivo(id_aditivo):
     
 #Produtos
 
+@app.route('/produtos',methods=['GET'])
+def produtos():
+    if request.method == "GET":
+        return class_produtos.class_produtos.produtos()
+    
+@app.route("/produtos/criar", methods=['GET','POST'])
+def criar_produto():
+    if request.method == "GET":
+        return class_produtos.class_produtos.obter_formulario_produto()
+    elif request.method == "POST":
+        return class_produtos.class_produtos.criar_produto()
+    
 if __name__ == "__main__":
     app.run(debug=True)

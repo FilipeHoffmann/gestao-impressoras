@@ -15,19 +15,13 @@
     </header>
 
     <main>
-      <div id="botao-novo-contrato">
+      <div id="botao-novo-produto">
         <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href="{{ url_for('criar_contrato')}}" role="button">Novo contrato</a>
-        </div>
-      </div>
-      <div id="botao-aditivo">
-        <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href="{{ url_for('aditivos') }}" role="button">Aditivo</a>
+          <a class="btn btn-primary " href="{{ url_for('criar_produto') }}" role="button">Novo Produto</a>
         </div>
       </div>
 
       <div class="tabela">
-
         <div id="filtros">
           <div class="input-group mb-3">
             <select class="custom-select" id="inputGroupSelect02">
@@ -44,26 +38,36 @@
           <thead class="thead-dark">
               <tr>
                 <th scope="col">ID</th>
+                <th scope="col">Lote</th>
+                <th scope="col">Código</th>
                 <th scope="col">Descrição</th>
-                <th scope="col">Data início</th>
-                <th scope="col">Data fim</th>
-                <th scope="col">Contratada</th>
-                <th scope="col">Custo total</th>
+                <th scope="col">Unidade</th>
+                <th scope="col">Quantidade Mensal</th>
+                <th scope="col">Quantidade Anual</th>
+                <th scope="col">Valor Unitário</th>
+                <th scope="col">Valor Total</th>
+                <th scope="col">ID Contrato</th>
+                <th scope="col">ID Aditivo</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
               </tr>
           </thead>
           <tbody>
-            {% for contrato in contratos %}
+            {% for produto in produtos %}
             <tr>
-              <th scope="row">{{ contrato[0] }}</td>
-              <td>{{ contrato[1] }}</td>
-              <td>{{ contrato[2] }}</td>
-              <td>{{ contrato[3] }}</td>
-              <td>{{ contrato[4] }}</td>
-              <td>R$ {{ contrato[5] }}</td>
-              <td><a class="btn btn-warning" href="{{ url_for('editar_contrato', id_contrato=contrato[0]) }}" role="button">Editar</a></td>
-              <td><a class="btn btn-danger" href="{{ url_for('excluir_contrato', id_contrato=contrato[0]) }}" role="button">Excluir</a></td>
+              <th scope="row">{{ produto[0] }}</td>
+              <td>{{ produto[1] }}</td>
+              <td>{{ produto[2] }}</td>
+              <td>{{ produto[3] }}</td>
+              <td>{{ produto[4] }}</td>
+              <td>{{ produto[5] }}</td>
+              <td>{{ produto[6] }}</td>
+              <td>{{ produto[7] }}</td>
+              <td>{{ produto[8] }}</td>
+              <td>{{ produto[9] }}</td>
+              <td>{{ produto[10] }}</td>
+              <td><a class="btn btn-warning" href="" role="button">Editar</a></td>
+              <td><a class="btn btn-danger" href="" role="button">Excluir</a></td>
             </tr>
             {% endfor %}
           </tbody>
