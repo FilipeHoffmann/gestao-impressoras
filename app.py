@@ -98,5 +98,12 @@ def impressoras():
     elif request.method == "POST":
         return class_impressoras.class_impressoras.criar_impressora()
     
+@app.route('/impressora/criar', methods=['GET', "POST"])
+def criar_impressora():
+    if request.method == "GET":
+        return class_impressoras.class_impressoras.obter_formulario_impressora()
+    elif request.method == "POST":
+        return class_impressoras.class_impressoras.criar_impressora()
+    
 if __name__ == "__main__":
     app.run(debug=True)

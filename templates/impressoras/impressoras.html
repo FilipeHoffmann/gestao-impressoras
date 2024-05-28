@@ -43,23 +43,26 @@
                 <th scope="col">Marca</th>
                 <th scope="col">Localização</th>
                 <th scope="col">Status</th>
-                <th scope="col">ID_Setores</th>
-                <th scope="col">ID_Cotas</th>
+                <th scope="col">Tipo Impressora</th>
+                <th scope="col">ID Setores</th>
+                <th scope="col">ID Cotas</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
               </tr>
           </thead>
           <tbody>
-            {% for contrato in contratos %}
+            {% for impressora in impressoras %}
             <tr>
-              <th scope="row">{{ contrato[0] }}</td>
-              <td>{{ contrato[1] }}</td>
-              <td>{{ contrato[2] }}</td>
-              <td>{{ contrato[3] }}</td>
-              <td>{{ contrato[4] }}</td>
-              <td>R$ {{ contrato[5] }}</td>
-              <td><a class="btn btn-warning" href="{{ url_for('editar_contrato', id_contrato=contrato[0]) }}" role="button">Editar</a></td>
-              <td><a class="btn btn-danger" href="{{ url_for('excluir_contrato', id_contrato=contrato[0]) }}" role="button">Excluir</a></td>
+              <th scope="row">{{ impressora[0] }}</td>
+              <td>{{ impressora[1] }}</td>
+              <td>{{ impressora[2] }}</td>
+              <td>{{ impressora[3] }}</td>
+              <td>{{ impressora[4] }}</td>
+              <td>{{ impressora[5] }}</td>
+              <td>{{ impressora[6] }}</td>
+              <td>{{ impressora[7] }}</td>
+              <td><a class="btn btn-warning" href="" role="button">Editar</a></td>
+              <td><a class="btn btn-danger" href="" role="button">Excluir</a></td>
             </tr>
             {% endfor %}
           </tbody>

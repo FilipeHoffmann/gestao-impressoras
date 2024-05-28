@@ -12,8 +12,8 @@ class class_impressoras:
 
     def obter_impressora(id_impressora):
         query = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM impressoras WHERE id_impressoras = {id_impressora}")
-        impressora = query.consultar()
-        return render_template('impressoras/editar_impressora.html', id_impressora=id_impressora, impressora=impressora)
+        impressoras = query.consultar()
+        return render_template('impressoras/editar_impressora.html', id_impressora=id_impressora, impressora=impressoras)
     
     def editar_contrato(id_contrato):
         descricao = request.form['descricao']
@@ -39,12 +39,20 @@ class class_impressoras:
         marca = request.form['marca']
         localizacao = request.form['localizacao']
         status = request.form['status']
+        tipo_impressora = request.form['tipo_impressora']
         id_setores = request.form['id_setores']
         id_cotas = request.form['id_cotas']
-        conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(modelo, marca, localizacao, status, id_setores, id_cotas) VALUES ("{modelo}","{marca}","{localizacao}","{status}","{id_setores}", "{id_cotas}")').alterar_incluir_excluir()
+        if id_setores == '' and id_cotas == '':
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(modelo, marca, localizacao, status, tipo_impressora) VALUES ("{modelo}","{marca}","{localizacao}","{status}"),"{tipo_impressora}"').alterar_incluir_excluir()
+        elif id_setores == '':
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(modelo, marca, localizacao, status, tipo_impressora, id_cotas) VALUES ("{modelo}","{marca}","{localizacao}","{status}", "{tipo_impressora}", "{id_cotas}")').alterar_incluir_excluir()
+        elif id_cotas == '':
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(modelo, marca, localizacao, status, tipo_impressora, id_setores) VALUES ("{modelo}","{marca}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}")').alterar_incluir_excluir()
+        else:
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(modelo, marca, localizacao, status, tipo_impressora, id_setores, id_cotas) VALUES ("{modelo}","{marca}","{localizacao}","{status}", {tipo_impressora},"{id_setores}", "{id_cotas}")').alterar_incluir_excluir()
         mensagem = "Impressora adicionada!"
         return render_template('/impressoras/criar_impressora.html',
                             mensagem = mensagem)
     
-    def obter_formulario_contrato():
-        return render_template('/contratos/criar_contrato.html')
+    def obter_formulario_impressora():
+        return render_template('/impressoras/criar_impressora.html')
