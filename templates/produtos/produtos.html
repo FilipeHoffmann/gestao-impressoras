@@ -66,8 +66,8 @@
               <td>{{ produto[8] }}</td>
               <td>{{ produto[9] }}</td>
               <td>{{ produto[10] }}</td>
-              <td><a class="btn btn-warning" href="" role="button">Editar</a></td>
-              <td><a class="btn btn-danger" href="" role="button">Excluir</a></td>
+              <td><a class="btn btn-warning" href="{{ url_for('editar_produto', id_produto=produto[0]) }}" role="button">Editar</a></td>
+              <td><a class="btn btn-danger" href="{{ url_for('excluir_produto', id_produto=produto[0]) }}" role="button">Excluir</a></td>
             </tr>
             {% endfor %}
           </tbody>

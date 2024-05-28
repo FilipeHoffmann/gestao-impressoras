@@ -23,12 +23,15 @@ class class_produtos:
             valor_total = request.form["valor_total"]
             id_contratos = request.form["id_contratos"]
             id_aditivos = request.form["id_aditivos"]
-            if id_contratos == "":
-                query = f'''INSERT INTO produtos(lote,codigo,descricao,unidade,quantidade_mensal,quantidade_anual,valor_unitario,valor_total)
-                        VALUES ('{lote}','{codigo}','{descricao}','{unidade}','{quantidade_mensal}','{quantidade_anual}','{valor_unitario}','{valor_total}')'''
+            if id_aditivos == "" and id_contratos != "":
+                query = f'''INSERT INTO produtos(lote,codigo,descricao,unidade,quantidade_mensal,quantidade_anual,valor_unitario,valor_total,id_contratos)
+                        VALUES ('{lote}','{codigo}','{descricao}','{unidade}','{quantidade_mensal}','{quantidade_anual}','{valor_unitario}','{valor_total}','{id_contratos}')'''
             if id_contratos != "" and id_aditivos != "":
                 query = f'''INSERT INTO produtos(lote,codigo,descricao,unidade,quantidade_mensal,quantidade_anual,valor_unitario,valor_total,id_contratos,id_aditivos)
                         VALUES ('{lote}','{codigo}','{descricao}','{unidade}','{quantidade_mensal}','{quantidade_anual}','{valor_unitario}','{valor_total}','{id_contratos}','{id_aditivos}')'''
+            if id_contratos == "" and id_aditivos == "":
+                query = f'''INSERT INTO produtos(lote,codigo,descricao,unidade,quantidade_mensal,quantidade_anual,valor_unitario,valor_total)
+                        VALUES ('{lote}','{codigo}','{descricao}','{unidade}','{quantidade_mensal}','{quantidade_anual}','{valor_unitario}','{valor_total}')'''
             conector_banco_de_dados.conector_banco_de_dados(query).alterar_incluir_excluir()
             mensagem = "Produto adicionado!"
             return render_template("/produtos/criar_produto.html",
@@ -37,3 +40,33 @@ class class_produtos:
     def obter_formulario_produto():
         if request.method == "GET":
             return render_template("/produtos/criar_produto.html")
+        
+    def editar_produto(id_produto):
+        lote = request.form["lote"]
+        codigo = request.form["codigo"]
+        descricao = request.form["descricao"]
+        unidade = request.form["unidade"]
+        quantidade_mensal = request.form["quantidade_mensal"]
+        quantidade_anual = request.form["quantidade_anual"]
+        valor_unitario = request.form["valor_unitario"]
+        valor_total = request.form["valor_total"]
+        id_contratos = request.form["id_contratos"]
+        id_aditivos = request.form["id_aditivos"]
+        update_query = f"""
+            UPDATE produtos
+            SET lote = '{lote}', codigo = '{codigo}', descricao = '{descricao}', unidade = '{unidade}', quantidade_mensal = '{quantidade_mensal}', quantidade_anual = '{quantidade_anual}'
+            valor_unitario = '{valor_unitario}', valor_total = '{valor_total}', id_contratos = {id_contratos}, id_aditivos = '{id_aditivos}'
+            WHERE id_produtos = '{id_produto}'
+        """
+        conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
+        return redirect(url_for('produtos'))
+    
+    def obter_produto(id_produto):
+        query = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM produtos WHERE id_produtos = {id_produto}")
+        produto = query.consultar()
+        return render_template('produtos/editar_produto.html', id_produto=id_produto, produto=produto)
+    
+    def excluir_produto(id_produto):
+        delete_query = f"DELETE FROM produtos WHERE id_produtos = {id_produto}"
+        conector_banco_de_dados.conector_banco_de_dados(delete_query).alterar_incluir_excluir()
+        return redirect(url_for('produtos'))
