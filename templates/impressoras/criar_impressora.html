@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestão Impressoras</title>
+    <link rel="stylesheet" href="/static/styles/impressoras/criar_impressora.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <div class="titulo-cabecalho">
+          <h1>Criar Impressora</h1>
+        </div>
+      </header>
+
+    <main>
+        <div id="formulario">
+            <Form method="post" class="form-group">
+                <label for="">Modelo:</label>
+                <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Modelo" name="modelo" required>
+                <label for="">Marca:</label>
+                <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Marca" name="marca" required>
+                <label for="">Localização:</label>
+                <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Localização" name="localização" required>
+                <label for="">Status:</label>
+                <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Status" name="status" required>
+                <label for="">ID_Setores:</label>
+                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID_Setores" name="id_setores" required>
+                <label for="">ID_Cotas:</label>
+                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID_Cotas" name="id_cotas" required>
+                
+                <div class="form-group button-container">
+                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+                </div>
+            </Form>
+        </div>
+
+        <div id="mensagem">{{ mensagem }}</div>
+        <div class="container-botao">
+            <div class="d-grid gap-4 col-3 mx-auto">
+              <a class="btn btn-primary " href=" {{ url_for('impressoras') }}" role="button">Voltar</a>
+            </div>
+        </div>
+    </main>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>

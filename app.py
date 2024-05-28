@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from controller.contratos import class_contratos
 from controller.aditivos import class_aditivos
 from controller.produtos import class_produtos
+from controller.impressoras import class_impressoras
 
 app = Flask(__name__)
 
@@ -76,6 +77,14 @@ def criar_produto():
         return class_produtos.class_produtos.obter_formulario_produto()
     elif request.method == "POST":
         return class_produtos.class_produtos.criar_produto()
+    
+#Impressoras
+@app.route('/impressoras', methods=['GET'])
+def impressoras():
+    if request.method == "GET":
+        return class_impressoras.class_impressoras.impressoras()
+    elif request.method == "POST":
+        return class_impressoras.class_impressoras.criar_impressora()
     
 if __name__ == "__main__":
     app.run(debug=True)
