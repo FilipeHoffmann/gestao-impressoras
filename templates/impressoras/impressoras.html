@@ -61,7 +61,7 @@
               <td>{{ impressora[5] }}</td>
               <td>{{ impressora[6] }}</td>
               <td>{{ impressora[7] }}</td>
-              <td><a class="btn btn-warning" href="{{ url_for('editar_impressora', id_impressora = impressora[0]) }}" role="button">Editar</a></td>
+              <td><a class="btn btn-warning" href="{{ url_for('editar_impressora', id_impressora=impressora[0]) }}" role="button">Editar</a></td>
               <td><a class="btn btn-danger" href="" role="button">Excluir</a></td>
             </tr>
             {% endfor %}
