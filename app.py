@@ -4,6 +4,7 @@ from controller.aditivos import class_aditivos
 from controller.produtos import class_produtos
 from controller.impressoras import class_impressoras
 from controller.secretarias import class_secretarias
+from controller.setores import class_setores
 
 app = Flask(__name__)
 
@@ -138,6 +139,32 @@ def editar_secretaria(id_secretaria):
 def excluir_secretaria(id_secretaria):
     if request.method == "GET":
         return class_secretarias.class_secretarias.excluir_secretaria(id_secretaria)
+    
+#Setores
+
+@app.route('/secretarias/setores',methods=['GET'])
+def setores():
+    if request.method == "GET":
+        return class_setores.class_setores.setores()
+    
+@app.route("/secretarias/setores/criar", methods=['GET','POST'])
+def criar_setor():
+    if request.method == "GET":
+        return class_setores.class_setores.obter_formulario_setor()
+    elif request.method == "POST":
+        return class_setores.class_setores.criar_setor()
+    
+@app.route("/secretarias/setores/editar/<int:id_setor>", methods=['GET','POST'])
+def editar_setor(id_setor):
+    if request.method == "GET":
+        return class_setores.class_setores.obter_setor(id_setor)
+    elif request.method == "POST":
+        return class_setores.class_setores.editar_setor(id_setor)
+    
+@app.route("/secretarias/setores/excluir/<int:id_setor>", methods=['GET'])
+def excluir_setor(id_setor):
+    if request.method == "GET":
+        return class_setores.class_setores.excluir_setor(id_setor)
     
 if __name__ == "__main__":
     app.run(debug=True)

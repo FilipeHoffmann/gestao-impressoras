@@ -10,20 +10,14 @@
   <body>
     <header>
       <div class="titulo-cabecalho">
-        <h1>Secretarias</h1>
+        <h1>Setores</h1>
       </div>
     </header>
 
     <main>
-      <div id="botao-nova-secretaria">
+      <div id="botao-novo-setor">
         <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href="{{ url_for('criar_secretaria') }}" role="button">Nova Secretaria</a>
-        </div>
-      </div>
-
-      <div id="botao-nova-secretaria">
-        <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href="{{ url_for('setores') }}" role="button">Setores</a>
+          <a class="btn btn-primary " href="{{ url_for('criar_setor') }}" role="button">Novo setor</a>
         </div>
       </div>
 
@@ -44,18 +38,22 @@
           <thead class="thead-dark">
               <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Nome</th>
+                <th scope="col">ID Secretaria</th>
+                <th scope="col">Nome Setor</th>
+                <th scope="col">Endereço</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
               </tr>
           </thead>
           <tbody>
-            {% for secretaria in secretarias %}
+            {% for setor in setores %}
             <tr>
-              <th scope="row">{{ secretaria[0] }}</td>
-              <td>{{ secretaria[1] }}</td>
-              <td><a class="btn btn-warning" href="{{ url_for('editar_secretaria', id_secretaria = secretaria[0]) }}" role="button">Editar</a></td>
-              <td><a class="btn btn-danger" href="{{ url_for('excluir_secretaria', id_secretaria = secretaria[0]) }}" role="button">Excluir</a></td>
+              <th scope="row">{{ setor[0] }}</td>
+              <td>{{ setor[1] }}</td>
+              <td>{{ setor[2] }}</td>
+              <td>{{ setor[3] }}</td>
+              <td><a class="btn btn-warning" href="{{ url_for('editar_setor', id_setor = setor[0]) }}" role="button">Editar</a></td>
+              <td><a class="btn btn-danger" href="{{ url_for('excluir_setor', id_setor = setor[0]) }}" role="button">Excluir</a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -63,7 +61,7 @@
       </div>
       <div class="container-botao">
         <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary" href="{{ url_for('index') }}" role="button">Voltar</a>
+          <a class="btn btn-primary" href="{{ url_for('secretarias') }}" role="button">Voltar</a>
         </div>
       </div>
     </main>
