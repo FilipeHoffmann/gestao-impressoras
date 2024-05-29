@@ -3,6 +3,7 @@ from controller.contratos import class_contratos
 from controller.aditivos import class_aditivos
 from controller.produtos import class_produtos
 from controller.impressoras import class_impressoras
+from controller.secretarias import class_secretarias
 
 app = Flask(__name__)
 
@@ -104,6 +105,32 @@ def criar_impressora():
         return class_impressoras.class_impressoras.obter_formulario_impressora()
     elif request.method == "POST":
         return class_impressoras.class_impressoras.criar_impressora()
+    
+#Secretarias
+
+@app.route('/secretarias',methods=['GET'])
+def secretarias():
+    if request.method == "GET":
+        return class_secretarias.class_secretarias.secretarias()
+    
+@app.route("/secretarias/criar", methods=['GET','POST'])
+def criar_secretaria():
+    if request.method == "GET":
+        return class_secretarias.class_secretarias.obter_formulario_secretaria()
+    elif request.method == "POST":
+        return class_secretarias.class_secretarias.criar_secretaria()
+    
+@app.route("/secretarias/editar/<int:id_secretaria>", methods=['GET','POST'])
+def editar_secretaria(id_secretaria):
+    if request.method == "GET":
+        return class_secretarias.class_secretarias.obter_secretaria(id_secretaria)
+    elif request.method == "POST":
+        return class_secretarias.class_secretarias.editar_secretaria(id_secretaria)
+    
+@app.route("/secretarias/excluir/<int:id_secretaria>", methods=['GET'])
+def excluir_secretaria(id_secretaria):
+    if request.method == "GET":
+        return class_secretarias.class_secretarias.excluir_secretaria(id_secretaria)
     
 if __name__ == "__main__":
     app.run(debug=True)
