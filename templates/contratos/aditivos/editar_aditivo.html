@@ -14,26 +14,28 @@
       </div>
     </header>
     <main>
-        <div id="formulario">
-            <form method="POST" class="form-group">
-                <label for="id_contrato">ID Contrato:</label>
-                <input type="text" id="id_contrato" name="id_contrato" value="{{ aditivo[0]['contract_id'] }}" required><br>
-    
-                <label for="data_prorrogada">Data Prorrogada:</label>
-                <input type="date" id="data_prorrogada" name="data_prorrogada" value="{{ aditivo[0]['extended_date'] }}" required><br>
-    
-                <label for="detalhes">Detalhes:</label>
-                <input type="text" id="detalhes" name="detalhes" value="{{ aditivo[0]['details'] }}" required><br>
-    
-                <label for="custo_adicional">Custo Adicional:</label>
-                <input type="text" id="custo_adicional" name="custo_adicional" value="{{ aditivo[0]['additional_cost'] }}" required><br>
-    
-                <div class="form-group button-container">
-                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
-                </div>
-                {{ mensagem }}
-            </form>
-        </div>
+      <div id="formulario">
+          <form method="POST" class="form-group">
+              <label for="id_contrato">ID do Contrato:</label>
+              <input type="text" id="id_contrato" name="id_contrato" value="{{ aditivo.id_contrato }}" required><br>
+
+              <label for="data_prorrogada">Data Prorrogada:</label>
+              <input type="date" id="data_prorrogada" name="data_prorrogada" value="{{ aditivo.data_prorrogada }}" required><br>
+
+              <label for="detalhes">Detalhes:</label>
+              <input type="text" id="detalhes" name="detalhes" value="{{ aditivo.detalhes }}" required><br>
+
+              <label for="custo_adicional">Custo Adicional:</label>
+              <input type="text" id="custo_adicional" name="custo_adicional" value="{{ aditivo.custo_adicional }}" required><br>
+
+              <div class="form-group button-container">
+                  <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+              </div>
+              {% if mensagem %}
+                  <div id="mensagem">{{ mensagem }}</div>
+              {% endif %}
+          </form>
+      </div>
           <div class="d-grid gap-4 col-3 mx-auto">
             <a class="btn btn-primary" href="{{ url_for('aditivos') }}" role="button">Voltar</a>
           </div>

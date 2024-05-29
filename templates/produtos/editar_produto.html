@@ -14,43 +14,46 @@
       </div>
     </header>
     <main>
-        <div id="formulario">
-            <form method="POST" class="form-group">
-                <label for="lote">Lote:</label>
-                <input type="number" id="lote" name="lote" value="{{ produto.lote }}" required><br>
-        
-                <label for="codigo">Código:</label>
-                <input type="number" id="codigo" name="codigo" value="{{ produto.codigo }}" required><br>
-        
-                <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao" value="{{ produto.descricao }}" required><br>
-        
-                <label for="unidade">Unidade:</label>
-                <input type="number" id="unidade" name="unidade" value="{{ produto.unidade }}" required><br>
-        
-                <label for="quantidade_mensal">Quantidade Mensal:</label>
-                <input type="number" id="quantidade_mensal" name="quantidade_mensal" value="{{ produto.quantidade_mensal }}" required><br>
+      <div id="formulario">
+          <form method="POST" class="form-group">
+              <label for="lote">Lote:</label>
+              <input type="text" id="lote" name="lote" value="{{ produto.lote }}" required><br>
 
-                <label for="quantidade_anual">Quantidade Anual:</label>
-                <input type="number" id="quantidade_anual" name="quantidade_anual" value="{{ produto.quantidade_anual }}" required><br>
+              <label for="codigo">Código:</label>
+              <input type="text" id="codigo" name="codigo" value="{{ produto.codigo }}" required><br>
 
-                <label for="valor_unitario">Valor Unitário:</label>
-                <input type="number" id="valor_unitario" name="valor_unitario" value="{{ produto.valor_unitario }}" required><br>
+              <label for="descricao">Descrição:</label>
+              <input type="text" id="descricao" name="descricao" value="{{ produto.descricao }}" required><br>
 
-                <label for="valor_total">Valor Total:</label>
-                <input type="number" id="valor_total" name="valor_total" value="{{ produto.valor_total }}" required><br>
+              <label for="unidade">Unidade:</label>
+              <input type="text" id="unidade" name="unidade" value="{{ produto.unidade }}" required><br>
 
-                <label for="id_contratos">ID Contrato:</label>
-                <input type="number" id="id_contratos" name="id_contratos" value="{{ produto.id_contratos }}"><br>
+              <label for="quantidade_mensal">Quantidade Mensal:</label>
+              <input type="text" id="quantidade_mensal" name="quantidade_mensal" value="{{ produto.quantidade_mensal }}" required><br>
 
-                <label for="id_aditivos">ID Aditivo:</label>
-                <input type="number" id="id_aditivos" name="id_aditivos" value="{{ produto.id_aditivos }}"><br>
-        
-                <div class="form-group button-container">
-                    <button type="submit" class="btn btn-primary mb-3">Enviar</button>
-                </div>
-            </form>
-        </div>
+              <label for="quantidade_anual">Quantidade Anual:</label>
+              <input type="text" id="quantidade_anual" name="quantidade_anual" value="{{ produto.quantidade_anual }}" required><br>
+
+              <label for="valor_unitario">Valor Unitário:</label>
+              <input type="text" id="valor_unitario" name="valor_unitario" value="{{ produto.valor_unitario }}" required><br>
+
+              <label for="valor_total">Valor Total:</label>
+              <input type="text" id="valor_total" name="valor_total" value="{{ produto.valor_total }}" required><br>
+
+              <label for="id_contratos">ID Contrato:</label>
+              <input type="text" id="id_contratos" name="id_contratos" value="{{ produto.id_contratos }}" required><br>
+
+              <label for="id_aditivos">ID Aditivo:</label>
+              <input type="text" id="id_aditivos" name="id_aditivos" value="{{ produto.id_aditivos }}" required><br>
+
+              <div class="form-group button-container">
+                  <button type="submit" class="btn btn-primary mb-3">Enviar</button>
+              </div>
+              {% if mensagem %}
+                  <div id="mensagem">{{ mensagem }}</div>
+              {% endif %}
+          </form>
+      </div>
           <div class="d-grid gap-4 col-3 mx-auto">
             <a class="btn btn-primary" href="{{ url_for('produtos') }}" role="button">Voltar</a>
           </div>

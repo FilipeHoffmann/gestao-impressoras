@@ -23,8 +23,16 @@ class class_aditivos:
         return render_template('/contratos/aditivos/criar_aditivo.html')
     
     def obter_aditivo(id_aditivo):
-        aditivos = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM aditivos WHERE id_aditivos = {id_aditivo}").consultar()
-        return render_template('/contratos/aditivos/editar_aditivo.html',  aditivo=aditivos)
+        aditivo = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM aditivos WHERE id_aditivos = {id_aditivo}").consultar()
+        if aditivo:
+            aditivo = aditivo[0]
+            aditivo_dict = {
+                'id_contrato': aditivo[1],
+                'data_prorrogada': aditivo[2],
+                'detalhes': aditivo[3],
+                'custo_adicional': aditivo[4]
+            }
+            return render_template('contratos/aditivos/editar_aditivo.html', aditivo=aditivo_dict)
         
     def editar_aditivo(id_aditivo):
         id_contrato = request.form['id_contrato']

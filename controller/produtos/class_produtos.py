@@ -81,9 +81,23 @@ class class_produtos:
         return redirect(url_for('produtos'))
     
     def obter_produto(id_produto):
-        query = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM produtos WHERE id_produtos = {id_produto}")
-        produto = query.consultar()
-        return render_template('produtos/editar_produto.html', id_produto=id_produto, produto=produto)
+        if request.method == 'GET':
+            produto = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM produtos WHERE id_produtos = {id_produto}").consultar()
+            if produto:
+                produto = produto[0]
+                produto_dict = {
+                    'lote': produto[1],
+                    'codigo': produto[2],
+                    'descricao': produto[3],
+                    'unidade': produto[4],
+                    'quantidade_mensal': produto[5],
+                    'quantidade_anual': produto[6],
+                    'valor_unitario': produto[7],
+                    'valor_total': produto[8],
+                    'id_contratos': produto[9],
+                    'id_aditivos': produto[10]
+                }
+                return render_template('produtos/editar_produto.html', produto=produto_dict)
     
     def excluir_produto(id_produto):
         delete_query = f"DELETE FROM produtos WHERE id_produtos = {id_produto}"

@@ -18,18 +18,19 @@
             <form method="POST" class="form-group">
                 <label for="descricao">Descrição:</label>
                 <input type="text" id="descricao" name="descricao" value="{{ contrato.descricao }}" required><br>
-        
+
                 <label for="data_inicio">Data Início:</label>
                 <input type="date" id="data_inicio" name="data_inicio" value="{{ contrato.data_inicio }}" required><br>
-        
+
                 <label for="data_fim">Data Fim:</label>
                 <input type="date" id="data_fim" name="data_fim" value="{{ contrato.data_fim }}" required><br>
-        
+
                 <label for="contratada">Contratada:</label>
                 <input type="text" id="contratada" name="contratada" value="{{ contrato.contratada }}" required><br>
-        
+
                 <label for="custo_total">Custo Total:</label>
                 <input type="text" id="custo_total" name="custo_total" value="{{ contrato.custo_total }}" required><br>
+
         
                 <div class="form-group button-container">
                     <button type="submit" class="btn btn-primary mb-3">Enviar</button>

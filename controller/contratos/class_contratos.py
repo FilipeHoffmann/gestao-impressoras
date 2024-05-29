@@ -11,9 +11,17 @@ class class_contratos:
                             ids=lista_contratos)
 
     def obter_contrato(id_contrato):
-        query = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM contratos WHERE id_contratos = {id_contrato}")
-        contrato = query.consultar()
-        return render_template('contratos/editar_contrato.html', contracts_id=id_contrato, contrato=contrato)
+        contrato = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM contratos WHERE id_contratos = {id_contrato}").consultar()
+        if contrato:
+            contrato = contrato[0]
+            contrato_dict = {
+                'descricao': contrato[1],
+                'data_inicio': contrato[2],
+                'data_fim': contrato[3],
+                'contratada': contrato[4],
+                'custo_total': contrato[5]
+            }
+            return render_template('contratos/editar_contrato.html', contrato=contrato_dict)
     
     def editar_contrato(id_contrato):
         descricao = request.form['descricao']
