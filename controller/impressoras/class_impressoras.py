@@ -15,16 +15,18 @@ class class_impressoras:
         impressoras = query.consultar()
         return render_template('impressoras/editar_impressora.html', id_impressora=id_impressora, impressora=impressoras)
     
-    def editar_contrato(id_contrato):
-        descricao = request.form['descricao']
-        data_inicio = request.form['data_inicio']
-        data_fim = request.form['data_fim']
-        contratada = request.form['contratada']
-        custo_total = request.form['custo_total']
+    def editar_impressora(id_impressora):
+        modelo = request.form['modelo']
+        marca = request.form['marca']
+        localizacao = request.form['localizacao']
+        status = request.form['status']
+        tipo_impressora = request.form['tipo_impressora']
+        id_setores = request.form['id_setores']
+        id_cotas = request.form['id_cotas']
         update_query = f"""
             UPDATE contratos
-            SET descricao = '{descricao}', data_inicial = '{data_inicio}', data_final = '{data_fim}', contratada = '{contratada}', custo_total = '{custo_total}'
-            WHERE id_contratos = '{id_contrato}'
+            SET descricao = '{modelo}', data_inicial = '{marca}', data_final = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', id_cotas = '{id_cotas}'
+            WHERE id_contratos = '{id_impressora}'
         """
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
         return redirect(url_for('contratos'))
