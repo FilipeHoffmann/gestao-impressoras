@@ -105,6 +105,13 @@ def criar_impressora():
         return class_impressoras.class_impressoras.obter_formulario_impressora()
     elif request.method == "POST":
         return class_impressoras.class_impressoras.criar_impressora()
+
+@app.route('/impressora/editar/<int:id_impressora>', methods=['GET', 'POST'])
+def editar_impressora(id_impressora):
+    if request.method == "GET":
+        return class_impressoras.class_impressoras.obter_impressora(id_impressora)
+    elif request.method == "POST":
+        return class_impressoras.class_impressoras.editar_impressora(id_impressora)
     
 #Secretarias
 

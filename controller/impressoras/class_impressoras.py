@@ -45,7 +45,7 @@ class class_impressoras:
         id_setores = request.form['id_setores']
         id_cotas = request.form['id_cotas']
         if id_setores == '' and id_cotas == '':
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(modelo, marca, localizacao, status, tipo_impressora) VALUES ("{modelo}","{marca}","{localizacao}","{status}"),"{tipo_impressora}"').alterar_incluir_excluir()
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(modelo, marca, localizacao, status, tipo_impressora) VALUES ("{modelo}","{marca}","{localizacao}","{status}","{tipo_impressora}")').alterar_incluir_excluir()
         elif id_setores == '':
             conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(modelo, marca, localizacao, status, tipo_impressora, id_cotas) VALUES ("{modelo}","{marca}","{localizacao}","{status}", "{tipo_impressora}", "{id_cotas}")').alterar_incluir_excluir()
         elif id_cotas == '':
