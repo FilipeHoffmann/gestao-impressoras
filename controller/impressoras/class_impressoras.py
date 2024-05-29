@@ -29,7 +29,7 @@ class class_impressoras:
             WHERE id_contratos = '{id_impressora}'
         """
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
-        return redirect(url_for('contratos'))
+        return redirect(url_for('impressoras'))
             
     def excluir_contrato(id_contrato):
         delete_query = f"DELETE FROM contratos WHERE id_contratos = {id_contrato}"
