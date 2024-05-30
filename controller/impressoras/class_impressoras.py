@@ -13,7 +13,18 @@ class class_impressoras:
     def obter_impressora(id_impressora):
         query = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM impressoras WHERE id_impressoras = {id_impressora}")
         impressoras = query.consultar()
-        return render_template('impressoras/editar_impressora.html', id_impressora=id_impressora, impressora=impressoras)
+        if impressoras:
+                impressoras = impressoras[0]
+                impressoras_dict = {
+                    'modelo': impressoras[1],
+                    'marca': impressoras[2],
+                    'localizacao': impressoras[3],
+                    'status': impressoras[4],
+                    'tipo_impressora': impressoras[5],
+                    'id_setores': impressoras[6],
+                    'id_cotas': impressoras[7]
+                }
+        return render_template('impressoras/editar_impressora.html', id_impressora=id_impressora, impressora=impressoras_dict)
     
     def editar_impressora(id_impressora):
         modelo = request.form['modelo']
@@ -23,20 +34,19 @@ class class_impressoras:
         tipo_impressora = request.form['tipo_impressora']
         id_setores = request.form['id_setores']
         id_cotas = request.form['id_cotas']
-        print(modelo)
-        if (id_setores == '' and id_cotas == ''):
+        if ((id_setores == '' and id_cotas == '') or (id_setores == "None" and id_cotas == "None")):
             update_query = f"""
             UPDATE impressoras
             SET modelo = '{modelo}', marca = '{marca}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}'
             WHERE id_impressoras = '{id_impressora}'
             """
-        elif (id_setores == ''):
+        elif (id_setores == '' or id_setores == "None"):
             update_query = f"""
             UPDATE impressoras
             SET modelo = '{modelo}', marca = '{marca}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_cotas = '{id_cotas}'
             WHERE id_impressoras = '{id_impressora}'
             """
-        elif (id_cotas == ''):
+        elif (id_cotas == '' or id_cotas == "None"):
             update_query = f"""
             UPDATE impressoras
             SET modelo = '{modelo}', marca = '{marca}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}'

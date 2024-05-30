@@ -5,6 +5,7 @@ from controller.produtos import class_produtos
 from controller.impressoras import class_impressoras
 from controller.secretarias import class_secretarias
 from controller.setores import class_setores
+from controller.cotas import class_cotas
 
 app = Flask(__name__)
 
@@ -93,6 +94,7 @@ def excluir_produto(id_produto):
         return class_produtos.class_produtos.excluir_produto(id_produto)
 
 #Impressoras
+
 @app.route('/impressoras', methods=['GET'])
 def impressoras():
     if request.method == "GET":
@@ -100,24 +102,52 @@ def impressoras():
     elif request.method == "POST":
         return class_impressoras.class_impressoras.criar_impressora()
     
-@app.route('/impressora/criar', methods=['GET', "POST"])
+@app.route('/impressoras/criar', methods=['GET', "POST"])
 def criar_impressora():
     if request.method == "GET":
         return class_impressoras.class_impressoras.obter_formulario_impressora()
     elif request.method == "POST":
         return class_impressoras.class_impressoras.criar_impressora()
 
-@app.route('/impressora/editar/<int:id_impressora>', methods=['GET', 'POST'])
+@app.route('/impressoras/editar/<int:id_impressora>', methods=['GET', 'POST'])
 def editar_impressora(id_impressora):
     if request.method == "GET":
         return class_impressoras.class_impressoras.obter_impressora(id_impressora)
     elif request.method == "POST":
         return class_impressoras.class_impressoras.editar_impressora(id_impressora)
 
-@app.route('/impressora/excluir/<int:id_impressora>', methods=["GET"])
+@app.route('/impressoras/excluir/<int:id_impressora>', methods=["GET"])
 def excluir_impressora(id_impressora):
     if request.method == "GET":
         return class_impressoras.class_impressoras.excluir_impressora(id_impressora)
+    
+#Cotas
+
+@app.route('/impressoras/cotas', methods=['GET'])
+def cotas():
+    if request.method == "GET":
+        return class_cotas.class_cotas.cotas()
+    elif request.method == "POST":
+        return class_cotas.class_cotas.criar_cota()
+    
+@app.route('/impressoras/cotas/criar', methods=['GET', "POST"])
+def criar_cota():
+    if request.method == "GET":
+        return class_cotas.class_cotas.obter_formulario_cota()
+    elif request.method == "POST":
+        return class_cotas.class_cotas.criar_cota()
+
+@app.route('/impressoras/cotas/editar/<int:id_cota>', methods=['GET', 'POST'])
+def editar_cota(id_cota):
+    if request.method == "GET":
+        return class_cotas.class_cotas.obter_cota(id_cota)
+    elif request.method == "POST":
+        return class_cotas.class_cotas.editar_cota(id_cota)
+
+@app.route('/impressoras/cota/excluir/<int:id_cota>', methods=["GET"])
+def excluir_cota(id_cota):
+    if request.method == "GET":
+        return class_cotas.class_cotas.excluir_cota(id_cota)
     
 #Secretarias
 
