@@ -1,12 +1,8 @@
 header {
     width: 100%;
     background-color: #f1f1f1;
+    margin-bottom: 10px;
 }
-
-#botao-nova-impressora {
-    margin-top: 10px;
-}
-
 
 .titulo-cabecalho {
     display: flex;
@@ -14,6 +10,9 @@ header {
     justify-content: center;
 }
 
+#botao-cotas {
+    margin-top: 10px;
+}
 
 .table {
     width: 100%;
