@@ -113,6 +113,11 @@ def editar_impressora(id_impressora):
         return class_impressoras.class_impressoras.obter_impressora(id_impressora)
     elif request.method == "POST":
         return class_impressoras.class_impressoras.editar_impressora(id_impressora)
+
+@app.route('/impressora/excluir/<int:id_impressora>', methods=["GET"])
+def excluir_impressora(id_impressora):
+    if request.method == "GET":
+        return class_impressoras.class_impressoras.excluir_impressora(id_impressora)
     
 #Secretarias
 

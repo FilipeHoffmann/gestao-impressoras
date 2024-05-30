@@ -15,15 +15,15 @@
     </header>
     <main>
         <div id="formulario">
-            <form action="{{'editar_impressora'}}" method="POST" class="form-group">
+            <form method="POST" class="form-group">
                 <label for="modelo">Modelo:</label>
                 <input type="text" id="modelo" name="modelo" value="{{ impressora.modelo }}" required><br>
         
                 <label for="marca">Marca:</label>
-                <input type="date" id="marca" name="marca" value="{{ impressora.marca }}" required><br>
+                <input type="text" id="marca" name="marca" value="{{ impressora.marca }}" required><br>
         
                 <label for="localizacao">Localização:</label>
-                <input type="date" id="localizacao" name="localizacao" value="{{ impressora.localizacao }}" required><br>
+                <input type="text" id="localizacao" name="localizacao" value="{{ impressora.localizacao }}" required><br>
         
                 <label for="status">Status:</label>
                 <input type="text" id="status" name="status" value="{{ impressora.status }}" required><br>
