@@ -6,6 +6,7 @@ from controller.impressoras import class_impressoras
 from controller.secretarias import class_secretarias
 from controller.setores import class_setores
 from controller.cotas import class_cotas
+from controller.contadores import class_contadores
 
 app = Flask(__name__)
 
@@ -200,6 +201,32 @@ def editar_setor(id_setor):
 def excluir_setor(id_setor):
     if request.method == "GET":
         return class_setores.class_setores.excluir_setor(id_setor)
+    
+#Contadores
+
+@app.route('/contadores',methods=['GET'])
+def contadores():
+    if request.method == "GET":
+        return class_contadores.class_contadores.contadores()
+    
+@app.route("/contadores/criar", methods=['GET','POST'])
+def criar_contador():
+    if request.method == "GET":
+        return class_contadores.class_contadores.obter_formulario_contador()
+    elif request.method == "POST":
+        return class_contadores.class_contadores.criar_contador()
+    
+@app.route("/contadores/editar/<int:id_contador>", methods=['GET','POST'])
+def editar_contador(id_contador):
+    if request.method == "GET":
+        return class_contadores.class_contadores.obter_contador(id_contador)
+    elif request.method == "POST":
+        return class_contadores.class_contadores.editar_contador(id_contador)
+    
+@app.route("/contadores/excluir/<int:id_contador>", methods=['GET'])
+def excluir_contador(id_contador):
+    if request.method == "GET":
+        return class_contadores.class_contadores.excluir_contador(id_contador)  
     
 if __name__ == "__main__":
     app.run(debug=True)
