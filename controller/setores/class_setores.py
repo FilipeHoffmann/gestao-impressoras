@@ -4,7 +4,10 @@ from static.scripts import conector_banco_de_dados
 class class_setores:
     @staticmethod
     def setores():
-        lista_setores = conector_banco_de_dados.conector_banco_de_dados("SELECT * FROM setores ORDER BY id_setores DESC").consultar()
+        lista_setores = conector_banco_de_dados.conector_banco_de_dados('''SELECT s.id_setores, secretarias.nome,s.nome_setor, s.endereco
+        FROM setores AS s
+        INNER JOIN secretarias ON secretarias.id_secretarias = s.id_secretarias 
+        ORDER BY id_setores DESC''').consultar()
         return render_template('/secretarias/setores/setores.html',
                             setores = lista_setores,
                             ids=lista_setores)
