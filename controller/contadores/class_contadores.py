@@ -5,7 +5,13 @@ class class_contadores:
     @staticmethod
     def contadores():
         if request.method == "GET":
-            query = conector_banco_de_dados.conector_banco_de_dados("SELECT * FROM contadores ORDER BY id_contadores DESC")
+            query = conector_banco_de_dados.conector_banco_de_dados('''
+            SELECT c.id_contadores, i.modelo, s.nome_setor, p.codigo,c.data_coleta,c.paginas_impressas,c.mes_referente
+            FROM contadores as c
+            inner join impressoras as i on c.id_impressoras = i.id_impressoras
+            inner join setores as s on c.id_setores = s.id_setores
+            inner join produtos as p on c.id_produtos = p.id_produtos 
+            ORDER BY c.id_contadores DESC''')
             contadores = query.consultar()
             return render_template("/contadores/contadores.html",
                                 ids = contadores,
