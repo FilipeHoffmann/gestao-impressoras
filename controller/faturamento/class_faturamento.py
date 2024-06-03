@@ -6,12 +6,33 @@ class class_faturamento:
     def faturamento():
         return render_template("/faturamento/faturamento.html")
     
-    def obter_faturamento():
-        query = '''
-        SELECT c.id_contadores, secretarias.nome, setores.nome_setor, c.paginas_impressas,cotas.cota_mensal
+    def obter_faturamento(mes):
+        query = f'''
+        SELECT c.id_contadores, secretarias.nome, setores.nome_setor, c.paginas_impressas,cotas.cota_mensal,produtos.valor_unitario
         FROM contadores AS c
         INNER JOIN setores ON c.id_setores = setores.id_setores
         INNER JOIN secretarias ON setores.id_secretarias = secretarias.id_secretarias
         INNER JOIN impressoras ON c.id_impressoras = impressoras.id_impressoras
         INNER JOIN cotas ON impressoras.id_cotas = cotas.id_cotas
+        INNER JOIN produtos ON produtos.id_produtos= c.id_produtos
+        WHERE c.mes_referente = "{mes}"
+        ORDER BY secretarias.nome ASC
         '''
+        lista_contadores = conector_banco_de_dados.conector_banco_de_dados(query).consultar()
+        custo_total = 0
+        #Adicionando a coluna EXCEDENTES e TOTAL A PAGAR
+        for i in range(len(lista_contadores)):
+            lista_contadores[i] = list(lista_contadores[i])
+            if (lista_contadores[i][3]-lista_contadores[i][4]) <= 0:
+                lista_contadores[i].append(0)
+                lista_contadores[i].append(0.0)
+            else:
+                lista_contadores[i].append(lista_contadores[i][3]-lista_contadores[i][4])
+                lista_contadores[i].append(lista_contadores[i][5]*lista_contadores[i][6])
+            custo_total += lista_contadores[i][7]
+        print(lista_contadores)
+        return render_template("/faturamento/faturamento.html",
+                               faturamentos = lista_contadores,
+                               custo_total=custo_total,
+                               mes=mes)
+        

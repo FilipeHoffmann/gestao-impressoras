@@ -234,7 +234,12 @@ def excluir_contador(id_contador):
 @app.route("/faturamento", methods=['GET'])
 def faturamento():
     if request.method == "GET":
-        return class_faturamento.class_faturamento.faturamento()
+        mes = request.args.get('mes')
+        if mes == None:
+            return class_faturamento.class_faturamento.faturamento()
+        else:
+            return class_faturamento.class_faturamento.obter_faturamento(mes=mes)
+    
     
 if __name__ == "__main__":
     app.run(debug=True)

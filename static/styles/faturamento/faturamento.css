@@ -3,14 +3,6 @@ header {
     background-color: #f1f1f1;
 }
 
-#botao-aditivo {
-    margin-top: 10px;
-}
-
-#botao-nova-secretaria {
-    margin-top: 10px;
-}
-
 .container-botao {
     display: flex;
     flex-direction: column;
@@ -24,12 +16,6 @@ header {
     justify-content: center;
 }
 
-#info-rodape {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .table {
     width: 100%;
     margin: 20px auto;
@@ -38,13 +24,6 @@ header {
 
 .table tbody tr:hover {
     background-color: #8b8b8b;
-}
-
-.tabela {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
 }
 
 #filtros {
@@ -82,4 +61,18 @@ header {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+}
+
+#container-total {
+    text-align: center;
+}
+
+#container-meses {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

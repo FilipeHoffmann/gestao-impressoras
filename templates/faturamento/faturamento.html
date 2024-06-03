@@ -17,24 +17,31 @@
     <main>
       <div id="container-faturamento">
         <div id="container-meses">
-          <p>MESES</p>
-          <ul id="lista-meses">
-            <li>JANEIRO</li>
-            <li>FEVEREIRO</li>
-            <li>MARÇO</li>
-            <li>ABRIL</li>
-            <li>MAIO</li>
-            <li>JUNHO</li>
-            <li>JULHO</li>
-            <li>AGOSTO</li>
-            <li>SETEMBRO</li>
-            <li>OUTUBRO</li>
-            <li>NOVEMBRO</li>
-            <li>DEZEMBRO</li>
-          </ul>
+          <form method="GET" action="{{ url_for('faturamento') }}">
+            <div class="form-group">
+              <label for="mes">Selecione o Mês:</label>
+              <select class="form-control" id="mes" name="mes" required>
+                <option value="{{mes}}">{{mes}}</option>
+                <option value="JANEIRO">JANEIRO</option>
+                <option value="FEVEREIRO">FEVEREIRO</option>
+                <option value="MARÇO">MARÇO</option>
+                <option value="ABRIL">ABRIL</option>
+                <option value="MAIO">MAIO</option>
+                <option value="JUNHO">JUNHO</option>
+                <option value="JULHO">JULHO</option>
+                <option value="AGOSTO">AGOSTO</option>
+                <option value="SETEMBRO">SETEMBRO</option>
+                <option value="OUTUBRO">OUTUBRO</option>
+                <option value="NOVEMBRO">NOVEMBRO</option>
+                <option value="DEZEMBRO">DEZEMBRO</option>
+              </select>
+            </div>
+            <div class="d-grid gap-4 col-3 mx-auto">
+            <button type="submit" class="btn btn-primary">Ver Contadores</button>
+            </div>
+          </form>
         </div>
         <div id="container-calculo">
-          <p>ITENS</p>
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
@@ -43,24 +50,28 @@
                 <th>SETOR</th>
                 <th>PÁGINAS IMPRESSAS</th>
                 <th>COTA</th>
-                <th>EXCEDENTES</th>
+                <th>VALOR UNITÁRIO EXCEDENTES</th>
+                <th>CÓPIAS EXCEDENTES</th>
                 <th>TOTAL A PAGAR</th>
               </tr>
             </thead>
             <tbody>
+              {% for faturamento in faturamentos %}
               <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>R$ </td>
+                <td>{{ faturamento[0] }}</td>
+                <td>{{ faturamento[1] }}</td>
+                <td>{{ faturamento[2] }}</td>
+                <td>{{ faturamento[3] }}</td>
+                <td>{{ faturamento[4] }}</td>
+                <td>R$ {{ faturamento[5] }}</td>
+                <td>{{ faturamento[6] }}</td>
+                <td>R$ {{ faturamento[7] }}</td>
               </tr>
+              {% endfor %}
             </tbody>
           </table>
           <div id="container-total">
-            <p>CUSTO TOTAL: </p>
+            <p>CUSTO TOTAL: R$ {{custo_total}}</p>
           </div>
         </div>
 
