@@ -34,24 +34,12 @@ class class_impressoras:
         tipo_impressora = request.form['tipo_impressora']
         id_setores = request.form['id_setores']
         id_cotas = request.form['id_cotas']
-        if ((id_setores == '' and id_cotas == '') or (id_setores == "None" and id_cotas == "None")):
-            update_query = f"""
-            UPDATE impressoras
-            SET modelo = '{modelo}', marca = '{marca}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}'
-            WHERE id_impressoras = '{id_impressora}'
-            """
-        elif (id_setores == '' or id_setores == "None"):
-            update_query = f"""
-            UPDATE impressoras
-            SET modelo = '{modelo}', marca = '{marca}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_cotas = '{id_cotas}'
-            WHERE id_impressoras = '{id_impressora}'
-            """
-        elif (id_cotas == '' or id_cotas == "None"):
-            update_query = f"""
-            UPDATE impressoras
-            SET modelo = '{modelo}', marca = '{marca}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}'
-            WHERE id_impressoras = '{id_impressora}'
-            """
+
+        update_query = f"""
+        UPDATE impressoras
+        SET modelo = '{modelo}', marca = '{marca}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', id_cotas = '{id_cotas}'
+        WHERE id_impressoras = '{id_impressora}'
+        """
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
         return redirect(url_for('impressoras'))
             

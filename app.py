@@ -7,6 +7,7 @@ from controller.secretarias import class_secretarias
 from controller.setores import class_setores
 from controller.cotas import class_cotas
 from controller.contadores import class_contadores
+from controller.faturamento import class_faturamento
 
 app = Flask(__name__)
 
@@ -226,7 +227,14 @@ def editar_contador(id_contador):
 @app.route("/contadores/excluir/<int:id_contador>", methods=['GET'])
 def excluir_contador(id_contador):
     if request.method == "GET":
-        return class_contadores.class_contadores.excluir_contador(id_contador)  
+        return class_contadores.class_contadores.excluir_contador(id_contador)
+    
+#Faturamento
+
+@app.route("/faturamento", methods=['GET'])
+def faturamento():
+    if request.method == "GET":
+        return class_faturamento.class_faturamento.faturamento()
     
 if __name__ == "__main__":
     app.run(debug=True)
