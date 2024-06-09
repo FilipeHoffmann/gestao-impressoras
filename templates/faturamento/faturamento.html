@@ -14,9 +14,40 @@
       </div>
     </header>
 
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Menu</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contratos') }}">Contratos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('produtos') }}">Produtos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('impressoras') }}">Impressoras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('secretarias') }}">Secretarias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contadores') }}">Contadores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('faturamento') }}">Faturamento</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <main>
-      <div id="container-faturamento">
-        <div id="container-meses">
+      <div id="container-faturamento" class="container">
+        <div id="container-meses" class="my-4">
           <form method="GET" action="{{ url_for('faturamento') }}">
             <div class="form-group">
               <label for="mes">Selecione o Mês:</label>
@@ -36,8 +67,8 @@
                 <option value="DEZEMBRO">DEZEMBRO</option>
               </select>
             </div>
-            <div class="d-grid gap-4 col-3 mx-auto">
-            <button type="submit" class="btn btn-primary">Ver Contadores</button>
+            <div class="d-grid gap-4 col-3 mx-auto my-3">
+              <button type="submit" class="btn btn-primary">Ver Contadores</button>
             </div>
           </form>
         </div>
@@ -78,7 +109,6 @@
             <p>CUSTO TOTAL: R$ {{custo_total}}</p>
           </div>
         </div>
-
       </div>
       
       <div class="container-botao">
@@ -87,6 +117,10 @@
         </div>
       </div>
     </main>
+
+    <footer class="bg-primary text-white text-center py-3">
+      <p>&copy; 2024 Gestão Impressoras. Desenvolvido por Filipe Hoffmann e Bruno Monteiro.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </body>
