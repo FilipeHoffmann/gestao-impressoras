@@ -14,37 +14,67 @@
       </div>
     </header>
     <main>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Menu</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contratos') }}">Contratos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('produtos') }}">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('impressoras') }}">Impressoras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('secretarias') }}">Secretarias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contadores') }}">Contadores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('faturamento') }}">Faturamento</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <div id="formulario">
           <form method="POST" class="form-group">
               <label for="lote">Lote:</label>
-              <input type="text" id="lote" name="lote" value="{{ produto.lote }}" required><br>
+              <input class="form-control" type="text" id="lote" name="lote" value="{{ produto.lote }}" required><br>
 
               <label for="codigo">Código:</label>
-              <input type="text" id="codigo" name="codigo" value="{{ produto.codigo }}" required><br>
+              <input class="form-control" type="text" id="codigo" name="codigo" value="{{ produto.codigo }}" required><br>
 
               <label for="descricao">Descrição:</label>
-              <input type="text" id="descricao" name="descricao" value="{{ produto.descricao }}" required><br>
+              <input class="form-control" type="text" id="descricao" name="descricao" value="{{ produto.descricao }}" required><br>
 
               <label for="unidade">Unidade:</label>
-              <input type="text" id="unidade" name="unidade" value="{{ produto.unidade }}" required><br>
+              <input class="form-control" type="text" id="unidade" name="unidade" value="{{ produto.unidade }}" required><br>
 
               <label for="quantidade_mensal">Quantidade Mensal:</label>
-              <input type="text" id="quantidade_mensal" name="quantidade_mensal" value="{{ produto.quantidade_mensal }}" required><br>
+              <input class="form-control" type="text" id="quantidade_mensal" name="quantidade_mensal" value="{{ produto.quantidade_mensal }}" required><br>
 
               <label for="quantidade_anual">Quantidade Anual:</label>
-              <input type="text" id="quantidade_anual" name="quantidade_anual" value="{{ produto.quantidade_anual }}" required><br>
+              <input class="form-control" type="text" id="quantidade_anual" name="quantidade_anual" value="{{ produto.quantidade_anual }}" required><br>
 
               <label for="valor_unitario">Valor Unitário:</label>
-              <input type="text" id="valor_unitario" name="valor_unitario" value="{{ produto.valor_unitario }}" required><br>
+              <input class="form-control" type="text" id="valor_unitario" name="valor_unitario" value="{{ produto.valor_unitario }}" required><br>
 
               <label for="valor_total">Valor Total:</label>
-              <input type="text" id="valor_total" name="valor_total" value="{{ produto.valor_total }}" required><br>
+              <input class="form-control" type="text" id="valor_total" name="valor_total" value="{{ produto.valor_total }}" required><br>
 
               <label for="id_contratos">ID Contrato:</label>
-              <input type="text" id="id_contratos" name="id_contratos" value="{{ produto.id_contratos }}" required><br>
+              <input class="form-control" type="text" id="id_contratos" name="id_contratos" value="{{ produto.id_contratos }}" required><br>
 
               <label for="id_aditivos">ID Aditivo:</label>
-              <input type="text" id="id_aditivos" name="id_aditivos" value="{{ produto.id_aditivos }}"><br>
+              <input class="form-control" type="text" id="id_aditivos" name="id_aditivos" value="{{ produto.id_aditivos }}"><br>
 
               <div class="form-group button-container">
                   <button type="submit" class="btn btn-primary mb-3">Enviar</button>

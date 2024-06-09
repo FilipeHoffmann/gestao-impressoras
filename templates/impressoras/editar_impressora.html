@@ -14,28 +14,58 @@
       </div>
     </header>
     <main>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Menu</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contratos') }}">Contratos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('produtos') }}">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('impressoras') }}">Impressoras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('secretarias') }}">Secretarias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contadores') }}">Contadores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('faturamento') }}">Faturamento</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
         <div id="formulario">
             <form method="POST" class="form-group">
                 <label for="modelo">Modelo:</label>
-                <input type="text" id="modelo" name="modelo" value="{{ impressora.modelo }}" required><br>
+                <input class="form-control" type="text" id="modelo" name="modelo" value="{{ impressora.modelo }}" required><br>
         
                 <label for="marca">Marca:</label>
-                <input type="text" id="marca" name="marca" value="{{ impressora.marca }}" required><br>
+                <input class="form-control" type="text" id="marca" name="marca" value="{{ impressora.marca }}" required><br>
         
                 <label for="localizacao">Localização:</label>
-                <input type="text" id="localizacao" name="localizacao" value="{{ impressora.localizacao }}" required><br>
+                <input class="form-control" type="text" id="localizacao" name="localizacao" value="{{ impressora.localizacao }}" required><br>
         
                 <label for="status">Status:</label>
-                <input type="text" id="status" name="status" value="{{ impressora.status }}" required><br>
+                <input class="form-control" type="text" id="status" name="status" value="{{ impressora.status }}" required><br>
         
                 <label for="tipo_impressora">Tipo Impressora:</label>
-                <input type="text" id="tipo_impressora" name="tipo_impressora" value="{{ impressora.tipo_impressora }}" required><br>
+                <input class="form-control" type="text" id="tipo_impressora" name="tipo_impressora" value="{{ impressora.tipo_impressora }}" required><br>
 
                 <label for="id_setores">ID Setores:</label>
-                <input type="text" id="id_setores" name="id_setores" value="{{ impressora.id_setores }}" ><br>
+                <input class="form-control" type="text" id="id_setores" name="id_setores" value="{{ impressora.id_setores }}" ><br>
 
                 <label for="id_cotas">ID Cotas:</label>
-                <input type="text" id="id_cotas" name="id_cotas" value="{{ impressora.id_cotas }}" ><br>
+                <input class="form-control" type="text" id="id_cotas" name="id_cotas" value="{{ impressora.id_cotas }}" ><br>
         
                 <div class="form-group button-container">
                     <button type="submit" class="btn btn-primary mb-3">Enviar</button>

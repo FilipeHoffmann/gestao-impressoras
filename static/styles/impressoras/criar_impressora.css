@@ -1,33 +1,70 @@
-header {
-    width: 100%;
-    background-color: #f1f1f1;
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
 }
 
-footer {
-    height: 40px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #f1f1f1;
+header {
+    background-color: #007bff;
+    color: white;
+    padding: 20px 0;
+}
+
+.titulo-cabecalho h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #0056b3;
+}
+
+.navbar-nav .nav-link {
+    color: white;
 }
 
 .container-botao {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px;
+    margin: 50px 0;
 }
 
-.titulo-cabecalho {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn-primary {
+    background-color: #007bff;
+    border: none;
 }
 
-#info-rodape {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+footer {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.table thead {
+    background-color: #343a40;
+    color: #fff;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table tbody tr:hover {
+    background-color: #8b8b8b;
 }
 
 #formulario {
@@ -40,7 +77,6 @@ footer {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Form elements styling */
 .form-group {
     margin-bottom: 15px;
 }
@@ -61,7 +97,6 @@ input.form-control {
     font-size: 16px;
 }
 
-/* Button styling */
 .button-container {
     text-align: center;
 }
@@ -81,7 +116,6 @@ button.btn:hover {
     background-color: #0056b3;
 }
 
-/* Message styling */
 #mensagem {
     margin-top: 20px;
     text-align: center;

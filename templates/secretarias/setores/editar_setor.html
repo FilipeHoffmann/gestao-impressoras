@@ -14,16 +14,46 @@
       </div>
     </header>
     <main>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Menu</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contratos') }}">Contratos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('produtos') }}">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('impressoras') }}">Impressoras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('secretarias') }}">Secretarias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contadores') }}">Contadores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('faturamento') }}">Faturamento</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <div id="formulario">
         <form method="POST" class="form-group">
           <label for="id_secretaria">ID Secretaria:</label>
-          <input type="text" id="id_secretaria" name="id_secretaria" class="form-control" value="{{ setor['id_secretaria'] }}" required>
+          <input class="form-control" type="text" id="id_secretaria" name="id_secretaria" class="form-control" value="{{ setor['id_secretaria'] }}" required>
           
           <label for="nome_setor">Nome do Setor:</label>
-          <input type="text" id="nome_setor" name="nome_setor" class="form-control" value="{{ setor['nome_setor'] }}" required>
+          <input class="form-control" type="text" id="nome_setor" name="nome_setor" class="form-control" value="{{ setor['nome_setor'] }}" required>
           
           <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" name="endereco" class="form-control" value="{{ setor['endereco'] }}" required>
+          <input class="form-control" type="text" id="endereco" name="endereco" class="form-control" value="{{ setor['endereco'] }}" required>
           
           <div class="form-group button-container">
             <button type="submit" class="btn btn-primary mb-3">Enviar</button>

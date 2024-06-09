@@ -14,24 +14,53 @@
       </div>
     </header>
     <main>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Menu</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contratos') }}">Contratos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('produtos') }}">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('impressoras') }}">Impressoras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('secretarias') }}">Secretarias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contadores') }}">Contadores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('faturamento') }}">Faturamento</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
         <div id="formulario">
             <form method="POST" class="form-group">
                 <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao" value="{{ contrato.descricao }}" required><br>
+                <input class="form-control" type="text" id="descricao" name="descricao" value="{{ contrato.descricao }}" required><br>
 
                 <label for="data_inicio">Data Início:</label>
-                <input type="date" id="data_inicio" name="data_inicio" value="{{ contrato.data_inicio }}" required><br>
+                <input class="form-control" type="date" id="data_inicio" name="data_inicio" value="{{ contrato.data_inicio }}" required><br>
 
                 <label for="data_fim">Data Fim:</label>
-                <input type="date" id="data_fim" name="data_fim" value="{{ contrato.data_fim }}" required><br>
+                <input class="form-control" type="date" id="data_fim" name="data_fim" value="{{ contrato.data_fim }}" required><br>
 
                 <label for="contratada">Contratada:</label>
-                <input type="text" id="contratada" name="contratada" value="{{ contrato.contratada }}" required><br>
+                <input class="form-control" type="text" id="contratada" name="contratada" value="{{ contrato.contratada }}" required><br>
 
                 <label for="custo_total">Custo Total:</label>
-                <input type="text" id="custo_total" name="custo_total" value="{{ contrato.custo_total }}" required><br>
+                <input class="form-control" type="text" id="custo_total" name="custo_total" value="{{ contrato.custo_total }}" required><br>
 
-        
                 <div class="form-group button-container">
                     <button type="submit" class="btn btn-primary mb-3">Enviar</button>
                 </div>

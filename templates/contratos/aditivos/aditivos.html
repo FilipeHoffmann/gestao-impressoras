@@ -15,6 +15,36 @@
     </header>
 
     <main>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Menu</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contratos') }}">Contratos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('produtos') }}">Produtos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('impressoras') }}">Impressoras</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('secretarias') }}">Secretarias</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('contadores') }}">Contadores</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('faturamento') }}">Faturamento</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
       <div id="botao-novo-aditivo">
         <div class="d-grid gap-4 col-3 mx-auto">
           <a class="btn btn-primary " href="{{ url_for('criar_aditivo') }}" role="button">Novo aditivo</a>
