@@ -49,4 +49,7 @@ class class_cotas:
                             mensagem = mensagem)
     
     def obter_formulario_cota():
-        return render_template('impressoras/cotas/criar_cota.html')
+        query = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM impressoras")
+        ids = query.consultar()
+        return render_template('impressoras/cotas/criar_cota.html',
+                               ids=ids)
