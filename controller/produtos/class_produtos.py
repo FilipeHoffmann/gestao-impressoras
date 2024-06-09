@@ -52,7 +52,6 @@ class class_produtos:
         valor_total = request.form["valor_total"]
         id_contratos = request.form["id_contratos"]
         id_aditivos = request.form["id_aditivos"]
-        
         if id_contratos != "" and id_aditivos != "":
             update_query = f"""
                 UPDATE produtos
