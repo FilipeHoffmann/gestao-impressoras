@@ -16,19 +16,17 @@ class class_cotas:
         if cotas:
                 cotas = cotas[0]
                 cotas_dict = {
-                    'impressoras': cotas[1],
-                    'cota_mensal': cotas[2],
-                    'tipo_cota': cotas[3]
+                    'cota_mensal': cotas[1],
+                    'tipo_cota': cotas[2]
                 }
         return render_template('impressoras/cotas/editar_cota.html', id_cota=id_cota, cotas=cotas_dict)
     
     def editar_cota(id_cota):
-        id_impressoras = request.form['id_impressoras']
         cota_mensal = request.form['cota_mensal']
         tipo_cota = request.form['tipo_cota']
         update_query = f"""
         UPDATE cotas
-        SET id_impressoras = "{id_impressoras}", cota_mensal = "{cota_mensal}", tipo_cota = '{tipo_cota}'
+        SET cota_mensal = "{cota_mensal}", tipo_cota = '{tipo_cota}'
         WHERE id_cotas = '{id_cota}'
         """
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
@@ -40,10 +38,9 @@ class class_cotas:
         return redirect(url_for('cotas'))
     
     def criar_cota():
-        id_impressora = request.form['id_impressora']
         cota_mensal = request.form['cota_mensal']
         tipo_cota = request.form['tipo_cota']
-        conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO cotas(id_impressoras,cota_mensal,tipo_cota) VALUES ("{id_impressora}","{cota_mensal}","{tipo_cota}")').alterar_incluir_excluir()
+        conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO cotas(cota_mensal,tipo_cota) VALUES ("{cota_mensal}","{tipo_cota}")').alterar_incluir_excluir()
         mensagem = "Cota adicionada!"
         return render_template('impressoras/cotas/criar_cota.html',
                             mensagem = mensagem)

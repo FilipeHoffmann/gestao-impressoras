@@ -47,13 +47,6 @@
           </nav>
         <div id="formulario">
             <Form method="post" class="form-group">
-                <label for="">ID Impressora:</label>
-                <select class="form-select" id="id_impressora" name="id_impressora" required>
-                    <option selected disabled>Selecione o ID da Impressora</option>
-                    {% for id in ids %}
-                        <option value="{{ id[0] }}">{{ id[0] }}</option>
-                    {% endfor %}
-                </select>
                 <label for="">Cota Mensal:</label>
                 <input class="form-control" id="formGroupExampleInput" type="number" placeholder="Cota Mensal" name="cota_mensal" required>
                 <label for="">Tipo de Cota:</label>

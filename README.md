@@ -4,6 +4,7 @@ Aplicação web em Python para a gestão de contratos relacionados a impressoras
 ## Bibliotecas/Frameworks:
     1 - mysql-connector-python
     2 - Flask
+
 ## Layout do projeto:
 ```
 └── gestao-impressoras/
@@ -44,4 +45,7 @@ Aplicação web em Python para a gestão de contratos relacionados a impressoras
         └── style.css
 ```
 
+## Faturamento
+
+Para gerar o faturamento de impressoras com o status **TROCADA** é necessário preencher o campo **Localização** da categoria **Impressoras** pois é através dela que se é feito o comparativo para a soma das **Cotas**.
 
