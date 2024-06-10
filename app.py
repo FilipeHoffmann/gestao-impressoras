@@ -125,14 +125,14 @@ def excluir_impressora(id_impressora):
     
 #Cotas
 
-@app.route('/impressoras/cotas', methods=['GET'])
+@app.route('/impressoras/cotas', methods=['GET', 'POST'])
 def cotas():
     if request.method == "GET":
         return class_cotas.class_cotas.cotas()
     elif request.method == "POST":
         return class_cotas.class_cotas.criar_cota()
     
-@app.route('/impressoras/cotas/criar', methods=['GET', "POST"])
+@app.route('/impressoras/cotas/criar', methods=['GET', 'POST'])
 def criar_cota():
     if request.method == "GET":
         return class_cotas.class_cotas.obter_formulario_cota()
