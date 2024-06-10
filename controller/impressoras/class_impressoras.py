@@ -64,7 +64,7 @@ class class_impressoras:
         elif id_cotas == '':
             conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, localizacao, status, tipo_impressora, id_setores) VALUES ("{id_impressora}","{modelo}","{marca}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}")').alterar_incluir_excluir()
         else:
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, localizacao, status, tipo_impressora, id_setores, id_cotas) VALUES ("{id_impressora}","{modelo}","{marca}","{localizacao}","{status}", {tipo_impressora},"{id_setores}", "{id_cotas}")').alterar_incluir_excluir()
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, localizacao, status, tipo_impressora, id_setores, id_cotas) VALUES ("{id_impressora}","{modelo}","{marca}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{id_cotas}")').alterar_incluir_excluir()
         mensagem = "Impressora adicionada!"
         return render_template('/impressoras/criar_impressora.html',
                             mensagem = mensagem)
