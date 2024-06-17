@@ -231,7 +231,7 @@ def excluir_contador(id_contador):
     
 #Faturamento
 
-@app.route("/faturamento", methods=['GET'])
+@app.route("/faturamento", methods=['GET','POST'])
 def faturamento():
     if request.method == "GET":
         mes = request.args.get('mes')
@@ -239,7 +239,12 @@ def faturamento():
             return class_faturamento.class_faturamento.faturamento()
         else:
             return class_faturamento.class_faturamento.obter_faturamento(mes=mes)
-    
+    if request.method == "POST":
+        mes = request.args.get('mes')
+        if mes == None:
+            return class_faturamento.class_faturamento.exportar_planilha(mes="TODOS")
+        else:
+            return class_faturamento.class_faturamento.exportar_planilha(mes=mes)
     
 if __name__ == "__main__":
     app.run(debug=True)
