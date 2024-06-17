@@ -34,7 +34,16 @@ class class_contadores:
 
     def obter_formulario_contador():
         if request.method == "GET":
-            return render_template("/contadores/criar_contador.html")
+            impressoras_query = 'SELECT id_impressoras, modelo FROM impressoras'
+            impressoras = conector_banco_de_dados.conector_banco_de_dados(impressoras_query).consultar()
+            setores_query = "SELECT id_setores, nome_setor FROM setores"
+            setores = conector_banco_de_dados.conector_banco_de_dados(setores_query).consultar()
+            produtos_query = "SELECT id_produtos, descricao FROM produtos"
+            produtos = conector_banco_de_dados.conector_banco_de_dados(produtos_query).consultar()
+            return render_template("/contadores/criar_contador.html",
+                                   impressoras=impressoras,
+                                   setores=setores,
+                                   produtos=produtos)
         
     def editar_contador(id_contador):
         id_impressoras = request.form["id_impressoras"]

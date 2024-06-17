@@ -48,7 +48,11 @@
         <div id="formulario">
             <Form method="post" class="form-group">
                 <label for="">ID Secretaria:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Secretaria" name="id_secretaria" required>
+                <Select name="id_secretaria" class="form-select">
+                  {% for secretaria in secretarias %}
+                    <option value="{{ secretaria[0] }}">{{ secretaria[1] }}</option>
+                  {% endfor %}
+                </Select>
                 <label for="">Nome:</label>
                 <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Nome" name="nome_setor" required>
                 <label for="">Endereço:</label>

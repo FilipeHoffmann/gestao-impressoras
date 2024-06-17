@@ -22,7 +22,10 @@ class class_setores:
                             mensagem = mensagem)
             
     def obter_formulario_setor():
-        return render_template('/secretarias/setores/criar_setor.html')
+        secretarias_query = "SELECT id_secretarias, nome FROM secretarias"
+        secretarias = conector_banco_de_dados.conector_banco_de_dados(secretarias_query).consultar()
+        return render_template('/secretarias/setores/criar_setor.html',
+                               secretarias=secretarias)
     
     def obter_setor(id_setor):
         setor = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM setores WHERE id_setores = {id_setor}").consultar()

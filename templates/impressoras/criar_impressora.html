@@ -53,6 +53,8 @@
                 <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Modelo" name="modelo" required>
                 <label for="">Marca:</label>
                 <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Marca" name="marca" required>
+                <label for="">IP:</label>
+                <input class="form-control" id="formGroupExampleInput" type="text" placeholder="IP" name="ip" required>
                 <label for="">Localização:</label>
                 <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Localização" name="localizacao" required>
                 <label for="">Status:</label>
@@ -64,7 +66,11 @@
                 <label for="">Tipo Impressora:</label>
                 <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Tipo Impressora" name="tipo_impressora" required>
                 <label for="">ID Setores:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Setores" name="id_setores">
+                <Select name="id_setores" class="form-select">
+                  {% for setor in setores %}
+                    <option value="{{ setor[0] }}">{{ setor[1] }}</option>
+                  {% endfor %}
+                </Select>
                 <label for="">ID Cotas:</label>
                 <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Cotas" name="id_cotas">
                 

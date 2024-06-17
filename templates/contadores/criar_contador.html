@@ -48,11 +48,23 @@
         <div id="formulario">
             <Form method="post" class="form-group">
                 <label for="">ID Impressora:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Impressoras" name="id_impressoras" required>
+                <Select name="id_impressoras" class="form-select">
+                  {% for impressora in impressoras %}
+                    <option value="{{ impressora[0] }}">{{ impressora[1] }}</option>
+                  {% endfor %}
+                </Select>
                 <label for="">ID Setor:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Setor" name="id_setores" required>
+                <Select name="id_setores" class="form-select">
+                  {% for setor in setores %}
+                    <option value="{{ setor[0] }}">{{ setor[1] }}</option>
+                  {% endfor %}
+                </Select>
                 <label for="">ID Produto:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Produto" name="id_produtos" required>
+                <Select name="id_produtos" class="form-select">
+                  {% for produto in produtos %}
+                    <option value="{{ produto[0] }}">{{ produto[1] }}</option>
+                  {% endfor %}
+                </Select>
                 <label for="">Data Coleta:</label>
                 <input class="form-control" id="formGroupExampleInput" type="date" placeholder="Data Coleta" name="data_coleta" required>
                 <label for="">Páginas Impressas:</label>
