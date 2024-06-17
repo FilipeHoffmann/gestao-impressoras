@@ -64,7 +64,11 @@
                     <option value="DESATIVADA">DESATIVADA</option>
                 </select>
                 <label for="">Tipo Impressora:</label>
-                <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Tipo Impressora" name="tipo_impressora" required>
+                <select name="tipo_impressora" class="form-select" required>
+                  <option value="COPIADORA">COPIADORA</option>
+                  <option value="MULTIFUNCIONAL MONOCROMÁTICA">MULTIFUNCIONAL MONOCROMÁTICA</option>
+                  <option value="MULTIFUNCIONAL COLORIDA">MULTIFUNCIONAL COLORIDA</option>
+                </select>
                 <label for="">ID Setores:</label>
                 <Select name="id_setores" class="form-select">
                   {% for setor in setores %}
