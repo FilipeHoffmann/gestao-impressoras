@@ -100,4 +100,4 @@ class class_faturamento:
                 
         obj_salvar = salvar_dados(lista_contadores,f"relatorio_{mes}.csv")
         obj_salvar.salvar()
-        return send_file(f"relatorio_{mes}.csv")
+        return send_file(f"temp/relatorio_{mes}.csv")

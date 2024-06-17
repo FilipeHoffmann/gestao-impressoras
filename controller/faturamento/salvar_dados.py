@@ -14,7 +14,7 @@ class salvar_dados:
             return False
         
     def salvar(self): 
-        with open(self.nome_arquivo,'w+', encoding='utf-8', newline='') as arquivo_csv:
+        with open(f'temp/{self.nome_arquivo}','w+', encoding='utf-8', newline='') as arquivo_csv:
             escritor_csv = csv.writer(arquivo_csv)
             escritor_csv.writerow(["SECRETARIA","SETOR","IMPRESSORA","TIPO COTA","STATUS","DATA COLETA","PÁGINAS IMPRESSAS","COTA","VALOR EXCEDENTES","CÓPIAS EXCEDENTES","TOTAL A PAGAR"])
             for i in range(len(self.dados_array)):
