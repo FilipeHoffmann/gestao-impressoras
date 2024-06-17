@@ -48,7 +48,11 @@
         <div id="formulario">
             <Form method="post" class="form-group">
                 <label for="">ID Contrato:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Contrato" name="id_contrato" required>
+                <select name="id_contrato" class="form-select" id="inputGroupSelect02">
+                  {% for contrato in contratos %}
+                    <option value="{{ contrato[0] }}">{{ contrato[1] }}</option>
+                  {% endfor %}
+                </select>
                 <label for="">Data Prorrogada:</label>
                 <input class="form-control" id="formGroupExampleInput" type="date" placeholder="Data Prorrogada" name="data_prorrogada" required>
                 <label for="">Detalhes:</label>

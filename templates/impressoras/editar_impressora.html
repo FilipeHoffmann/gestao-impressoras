@@ -59,7 +59,11 @@
                 <input class="form-control" type="text" id="localizacao" name="localizacao" value="{{ impressora.localizacao }}" required><br>
         
                 <label for="status">Status:</label>
-                <input class="form-control" type="text" id="status" name="status" value="{{ impressora.status }}" required><br>
+                <select name="status" class="form-select" required>
+                  <option value="ATIVA">ATIVA</option>
+                  <option value="TROCADA">TROCADA</option>
+                  <option value="DESATIVADA">DESATIVADA</option>
+              </select><br>
         
                 <label for="tipo_impressora">Tipo Impressora:</label>
                 <input class="form-control" type="text" id="tipo_impressora" name="tipo_impressora" value="{{ impressora.tipo_impressora }}" required><br>

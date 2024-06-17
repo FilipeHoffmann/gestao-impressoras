@@ -23,6 +23,8 @@ class class_produtos:
             valor_total = request.form["valor_total"]
             id_contratos = request.form["id_contratos"]
             id_aditivos = request.form["id_aditivos"]
+            print(id_aditivos)
+            print(type(id_aditivos))
             if id_aditivos == "" and id_contratos != "":
                 query = f'''INSERT INTO produtos(lote,codigo,descricao,unidade,quantidade_mensal,quantidade_anual,valor_unitario,valor_total,id_contratos)
                         VALUES ('{lote}','{codigo}','{descricao}','{unidade}','{quantidade_mensal}','{quantidade_anual}','{valor_unitario}','{valor_total}','{id_contratos}')'''
@@ -39,7 +41,13 @@ class class_produtos:
 
     def obter_formulario_produto():
         if request.method == "GET":
-            return render_template("/produtos/criar_produto.html")
+            contratos_query = "SELECT id_contratos,descricao FROM contratos"
+            contratos = conector_banco_de_dados.conector_banco_de_dados(contratos_query).consultar()
+            aditivos_query = "SELECT id_aditivos,detalhes FROM aditivos"
+            aditivos = conector_banco_de_dados.conector_banco_de_dados(aditivos_query).consultar()
+            return render_template("/produtos/criar_produto.html",
+                                   contratos=contratos,
+                                   aditivos=aditivos)
         
     def editar_produto(id_produto):
         lote = request.form["lote"]

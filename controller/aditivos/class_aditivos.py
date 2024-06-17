@@ -20,7 +20,10 @@ class class_aditivos:
                             mensagem = mensagem)
             
     def obter_formulario_aditivo():
-        return render_template('/contratos/aditivos/criar_aditivo.html')
+        contratos_query = "SELECT id_contratos,descricao FROM contratos"
+        contratos = conector_banco_de_dados.conector_banco_de_dados(contratos_query).consultar()
+        return render_template('/contratos/aditivos/criar_aditivo.html',
+                               contratos=contratos)
     
     def obter_aditivo(id_aditivo):
         aditivo = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM aditivos WHERE id_aditivos = {id_aditivo}").consultar()

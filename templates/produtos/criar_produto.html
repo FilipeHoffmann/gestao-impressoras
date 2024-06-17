@@ -54,7 +54,10 @@
                 <label for="">Descrição:</label>
                 <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Descrição" name="descricao" required>
                 <label for="">Unidade:</label>
-                <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Unidade" name="unidade" required>
+                <Select name="unidade" class="form-select">
+                  <option value="Unidade">Unidades</option>
+                  <option value="Mês">Mês</option>
+                </select>
                 <label for="">Quantidade Mensal:</label>
                 <input class="form-control" id="formGroupExampleInput" type="number" placeholder="Quantidade Mensal" name="quantidade_mensal" required>
                 <label for="">Quantidade Anual:</label>
@@ -64,9 +67,18 @@
                 <label for="">Valor Total:</label>
                 <input class="form-control" id="formGroupExampleInput" type="number" placeholder="Valor Total" name="valor_total" required>
                 <label for="">ID Contrato:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Contrato" name="id_contratos">
+                <Select name="id_contratos" class="form-select">
+                  {% for contrato in contratos %}
+                  <option value="{{ contrato[0] }}">{{ contrato[1] }}</option>
+                  {% endfor %}
+                </select>
                 <label for="">ID Aditivo:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Aditivo" name="id_aditivos">
+                <Select name="id_aditivos" class="form-select">
+                  <option value="">ID Aditivo</option>
+                  {% for aditivo in aditivos %}
+                  <option value="{{ aditivo[0] }}">{{ aditivo[1] }}</option>
+                  {% endfor %}
+                </select>
                 <div class="form-group button-container">
                     <button type="submit" class="btn btn-primary mb-3">Enviar</button>
                 </div>

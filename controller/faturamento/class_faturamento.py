@@ -6,12 +6,11 @@ class class_faturamento:
     @staticmethod
     def faturamento():
         query = f'''
-        SELECT secretarias.nome, setores.nome_setor, impressoras.id_impressoras, cotas.tipo_cota,impressoras.status, c.data_coleta, c.paginas_impressas,cotas.cota_mensal,produtos.valor_unitario
+        SELECT secretarias.nome, setores.nome_setor, impressoras.id_impressoras, impressoras.tipo_impressora,impressoras.status, c.data_coleta, c.paginas_impressas, impressoras.cotas,produtos.valor_unitario
         FROM contadores AS c
         INNER JOIN setores ON c.id_setores = setores.id_setores
         INNER JOIN secretarias ON setores.id_secretarias = secretarias.id_secretarias
         INNER JOIN impressoras ON c.id_impressoras = impressoras.id_impressoras
-        INNER JOIN cotas ON impressoras.id_cotas = cotas.id_cotas
         INNER JOIN produtos ON produtos.id_produtos= c.id_produtos
         WHERE impressoras.status = "ATIVA" OR impressoras.status = "TROCADA"
         ORDER BY secretarias.nome ASC
@@ -34,12 +33,11 @@ class class_faturamento:
     
     def obter_faturamento(mes):
         query = f'''
-        SELECT secretarias.nome, setores.nome_setor, impressoras.id_impressoras, cotas.tipo_cota,impressoras.status, c.data_coleta, c.paginas_impressas,cotas.cota_mensal,produtos.valor_unitario
+        SELECT secretarias.nome, setores.nome_setor, impressoras.id_impressoras, impressoras.tipo_impressora,impressoras.status, c.data_coleta, c.paginas_impressas,cotas.cota_mensal,produtos.valor_unitario
         FROM contadores AS c
         INNER JOIN setores ON c.id_setores = setores.id_setores
         INNER JOIN secretarias ON setores.id_secretarias = secretarias.id_secretarias
         INNER JOIN impressoras ON c.id_impressoras = impressoras.id_impressoras
-        INNER JOIN cotas ON impressoras.id_cotas = cotas.id_cotas
         INNER JOIN produtos ON produtos.id_produtos= c.id_produtos
         WHERE c.mes_referente = "{mes}" AND (impressoras.status = "ATIVA" OR impressoras.status = "TROCADA")
         ORDER BY secretarias.nome ASC
@@ -65,24 +63,22 @@ class class_faturamento:
     def exportar_planilha(mes):
         if mes == "TODOS":
             query = f'''
-            SELECT secretarias.nome, setores.nome_setor, impressoras.id_impressoras, cotas.tipo_cota,impressoras.status, c.data_coleta, c.paginas_impressas,cotas.cota_mensal,produtos.valor_unitario
+            SELECT secretarias.nome, setores.nome_setor, impressoras.id_impressoras, impressoras.tipo_impressora,impressoras.status, c.data_coleta, c.paginas_impressas, impressoras.cotas,produtos.valor_unitario
             FROM contadores AS c
             INNER JOIN setores ON c.id_setores = setores.id_setores
             INNER JOIN secretarias ON setores.id_secretarias = secretarias.id_secretarias
             INNER JOIN impressoras ON c.id_impressoras = impressoras.id_impressoras
-            INNER JOIN cotas ON impressoras.id_cotas = cotas.id_cotas
             INNER JOIN produtos ON produtos.id_produtos= c.id_produtos
             WHERE (impressoras.status = "ATIVA" OR impressoras.status = "TROCADA")
             ORDER BY secretarias.nome ASC
             '''
         else:
             query = f'''
-            SELECT secretarias.nome, setores.nome_setor, impressoras.id_impressoras, cotas.tipo_cota,impressoras.status, c.data_coleta, c.paginas_impressas,cotas.cota_mensal,produtos.valor_unitario
+            SELECT secretarias.nome, setores.nome_setor, impressoras.id_impressoras, impressoras.tipo_impressora,impressoras.status, c.data_coleta, c.paginas_impressas, impressoras.cotas,produtos.valor_unitario
             FROM contadores AS c
             INNER JOIN setores ON c.id_setores = setores.id_setores
             INNER JOIN secretarias ON setores.id_secretarias = secretarias.id_secretarias
             INNER JOIN impressoras ON c.id_impressoras = impressoras.id_impressoras
-            INNER JOIN cotas ON impressoras.id_cotas = cotas.id_cotas
             INNER JOIN produtos ON produtos.id_produtos= c.id_produtos
             WHERE c.mes_referente = "{mes}" AND (impressoras.status = "ATIVA" OR impressoras.status = "TROCADA")
             ORDER BY secretarias.nome ASC

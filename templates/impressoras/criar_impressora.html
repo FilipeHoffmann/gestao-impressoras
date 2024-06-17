@@ -48,7 +48,7 @@
         <div id="formulario">
             <Form method="post" class="form-group">
                 <label for="">ID Impressora:</label>
-                <input class="form-control" id="formGroupExampleInput" type="text" placeholder="ID Impressora" name="id_impressora" required>
+                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Impressora" name="id_impressora" required>
                 <label for="">Modelo:</label>
                 <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Modelo" name="modelo" required>
                 <label for="">Marca:</label>
@@ -58,7 +58,7 @@
                 <label for="">Localização:</label>
                 <input class="form-control" id="formGroupExampleInput" type="text" placeholder="Localização" name="localizacao" required>
                 <label for="">Status:</label>
-                <select name="status" class="form-select" aria-label="Default select example" required>
+                <select name="status" class="form-select" required>
                     <option value="ATIVA">ATIVA</option>
                     <option value="TROCADA">TROCADA</option>
                     <option value="DESATIVADA">DESATIVADA</option>
@@ -71,8 +71,8 @@
                     <option value="{{ setor[0] }}">{{ setor[1] }}</option>
                   {% endfor %}
                 </Select>
-                <label for="">ID Cotas:</label>
-                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="ID Cotas" name="id_cotas">
+                <label for="">Cota:</label>
+                <input class="form-control" id="formGroupExampleInput" type="number" placeholder="Cota" name="cotas">
                 
                 <div class="form-group button-container">
                     <button type="submit" class="btn btn-primary mb-3">Enviar</button>

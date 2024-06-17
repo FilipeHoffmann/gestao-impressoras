@@ -23,7 +23,7 @@ class class_impressoras:
                     'status': impressoras[5],
                     'tipo_impressora': impressoras[6],
                     'id_setores': impressoras[7],
-                    'id_cotas': impressoras[8]
+                    'cotas': impressoras[8]
                 }
         return render_template('impressoras/editar_impressora.html', id_impressora=id_impressora, impressora=impressoras_dict)
     
@@ -35,9 +35,9 @@ class class_impressoras:
         status = request.form['status']
         tipo_impressora = request.form['tipo_impressora']
         id_setores = request.form['id_setores']
-        id_cotas = request.form['id_cotas']
+        cotas = request.form['cotas']
         
-        if id_cotas == "" or id_cotas == "None":
+        if cotas == "" or cotas == "None":
             update_query = f"""
             UPDATE impressoras
             SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}'
@@ -46,7 +46,7 @@ class class_impressoras:
         else:
             update_query = f"""
             UPDATE impressoras
-            SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', id_cotas = '{id_cotas}'
+            SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', cotas = '{cotas}'
             WHERE id_impressoras = '{id_impressora}'
             """
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
@@ -66,15 +66,15 @@ class class_impressoras:
         status = request.form['status']
         tipo_impressora = request.form['tipo_impressora']
         id_setores = request.form['id_setores']
-        id_cotas = request.form['id_cotas']
-        if id_setores == '' and id_cotas == '':
+        cotas = request.form['cotas']
+        if id_setores == '' and cotas == '':
             conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}","{tipo_impressora}")').alterar_incluir_excluir()
         elif id_setores == '':
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_cotas) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}", "{id_cotas}")').alterar_incluir_excluir()
-        elif id_cotas == '':
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, cotas) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}", "{cotas}")').alterar_incluir_excluir()
+        elif cotas == '':
             conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}")').alterar_incluir_excluir()
         else:
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores, id_cotas) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{id_cotas}")').alterar_incluir_excluir()
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores, cotas) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{cotas}")').alterar_incluir_excluir()
         mensagem = "Impressora adicionada!"
         return render_template('/impressoras/criar_impressora.html',
                             mensagem = mensagem)
