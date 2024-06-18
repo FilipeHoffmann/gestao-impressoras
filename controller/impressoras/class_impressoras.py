@@ -13,18 +13,18 @@ class class_impressoras:
     def obter_impressora(id_impressora):
         query = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM impressoras WHERE id_impressoras = {id_impressora}")
         impressoras = query.consultar()
-        if impressoras:
-                impressoras = impressoras[0]
-                impressoras_dict = {
-                    'modelo': impressoras[1],
-                    'marca': impressoras[2],
-                    'ip': impressoras[3],
-                    'localizacao': impressoras[4],
-                    'status': impressoras[5],
-                    'tipo_impressora': impressoras[6],
-                    'id_setores': impressoras[7],
-                    'cotas': impressoras[8]
-                }
+        impressoras = impressoras[0]
+        impressoras_dict = {
+            'modelo': impressoras[1],
+            'marca': impressoras[2],
+            'ip': impressoras[3],
+            'localizacao': impressoras[4],
+            'status': impressoras[5],
+            'tipo_impressora': impressoras[6],
+            'cotas': impressoras[7],
+            'contador_inicial': impressoras[8],
+            'id_setores': impressoras[9]
+        }
         return render_template('impressoras/editar_impressora.html', id_impressora=id_impressora, impressora=impressoras_dict)
     
     def editar_impressora(id_impressora):
@@ -36,17 +36,18 @@ class class_impressoras:
         tipo_impressora = request.form['tipo_impressora']
         id_setores = request.form['id_setores']
         cotas = request.form['cotas']
+        contador_inicial = request.form['contador_inicial']
         
         if cotas == "" or cotas == "None":
             update_query = f"""
             UPDATE impressoras
-            SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}'
+            SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', contador_inicial = '{contador_inicial}'
             WHERE id_impressoras = '{id_impressora}'
             """
         else:
             update_query = f"""
             UPDATE impressoras
-            SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', cotas = '{cotas}'
+            SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', cotas = '{cotas}', contador_inicial = '{contador_inicial}'
             WHERE id_impressoras = '{id_impressora}'
             """
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
@@ -67,14 +68,16 @@ class class_impressoras:
         tipo_impressora = request.form['tipo_impressora']
         id_setores = request.form['id_setores']
         cotas = request.form['cotas']
+        contador_inicial = request.form['contador_inicial']
+
         if id_setores == '' and cotas == '':
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}","{tipo_impressora}")').alterar_incluir_excluir()
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, contador_inicial) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}","{tipo_impressora}","{contador_inicial}")').alterar_incluir_excluir()
         elif id_setores == '':
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, cotas) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}", "{cotas}")').alterar_incluir_excluir()
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, cotas, contador_inicial) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}", "{cotas}", "{contador_inicial}")').alterar_incluir_excluir()
         elif cotas == '':
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}")').alterar_incluir_excluir()
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores, contador_inicial) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{contador_inicial}")').alterar_incluir_excluir()
         else:
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores, cotas) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{cotas}")').alterar_incluir_excluir()
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores, cotas, contador_inicial) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{cotas}", "{contador_inicial}")').alterar_incluir_excluir()
         mensagem = "Impressora adicionada!"
         return render_template('/impressoras/criar_impressora.html',
                             mensagem = mensagem)
