@@ -51,26 +51,39 @@
         </div>
       </div>
 
-      <div class="tabela">
-        <div id="filtros">
-          <div class="input-group mb-3">
-            <select class="custom-select" id="inputGroupSelect02">
-              <option selected>ID</option>
-              {% for id in ids %}
-                <option value="{{ id[0] }}">{{ id[0] }}</option>
-              {% endfor %}
+      <div id="container-meses" class="my-4">
+        <form method="GET" action="{{ url_for('contadores') }}">
+          <div class="form-group">
+            <label for="mes">Selecione o Mês:</label>
+            <select class="form-control" id="mes" name="mes" required>
+              <option value="JANEIRO">JANEIRO</option>
+              <option value="FEVEREIRO">FEVEREIRO</option>
+              <option value="MARÇO">MARÇO</option>
+              <option value="ABRIL">ABRIL</option>
+              <option value="MAIO">MAIO</option>
+              <option value="JUNHO">JUNHO</option>
+              <option value="JULHO">JULHO</option>
+              <option value="AGOSTO">AGOSTO</option>
+              <option value="SETEMBRO">SETEMBRO</option>
+              <option value="OUTUBRO">OUTUBRO</option>
+              <option value="NOVEMBRO">NOVEMBRO</option>
+              <option value="DEZEMBRO">DEZEMBRO</option>
             </select>
-            <a class="btn btn-primary" href="" role="button">Filtrar</a>
           </div>
-        </div>
+          <div class="d-grid gap-4 col-3 mx-auto my-3">
+            <button type="submit" class="btn btn-primary">Ver Contadores</button>
+          </div>
+        </form>
+      </div>
 
+      <div class="tabela">
         <table class="table table-striped">
           <thead class="thead-dark">
               <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Modelo Impressoras</th>
+                <th scope="col">ID Impressora</th>
+                <th scope="col">Modelo Impressora</th>
+                <th scope="col">Nome da Secretaria</th>
                 <th scope="col">Nome do Setor</th>
-                <th scope="col">Código Produto</th>
                 <th scope="col">Data Coleta</th>
                 <th scope="col">Páginas Impressas</th>
                 <th scope="col">Mês Referente</th>

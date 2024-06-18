@@ -77,6 +77,13 @@
 
                 <label for="id_setores">ID Setores:</label>
                 <input class="form-control" type="text" id="id_setores" name="id_setores" value="{{ impressora.id_setores }}" >
+
+                <label for="">ID Produto:</label>
+                <Select name="id_produtos" class="form-select">
+                  {% for produto in produtos %}
+                    <option value="{{ produto[0] }}">{{ produto[1] }}</option>
+                  {% endfor %}
+                </Select>
         
                 <div class="form-group button-container">
                     <button type="submit" class="btn btn-primary mb-3">Enviar</button>

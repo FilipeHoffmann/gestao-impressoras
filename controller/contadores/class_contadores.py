@@ -3,18 +3,19 @@ from static.scripts import conector_banco_de_dados
 
 class class_contadores:
     @staticmethod
-    def contadores():
+    def contadores(mes):
         if request.method == "GET":
-            query = conector_banco_de_dados.conector_banco_de_dados('''
-            SELECT c.id_contadores, i.modelo, s.nome_setor, p.codigo,c.data_coleta,c.paginas_impressas,c.mes_referente
-            FROM contadores as c
-            inner join impressoras as i on c.id_impressoras = i.id_impressoras
-            inner join setores as s on c.id_setores = s.id_setores
-            inner join produtos as p on c.id_produtos = p.id_produtos 
-            ORDER BY c.id_contadores DESC''')
+            print(mes)
+            if mes == None:
+                query = conector_banco_de_dados.conector_banco_de_dados(f'''
+                SELECT impressoras.id_impressoras, impressoras.modelo, secretarias.nome, setores.nome_setor, produtos.descricao
+                FROM impressoras
+                INNER JOIN setores ON setores.id_setores = impressoras.id_setores
+                INNER JOIN secretarias ON secretarias.id_secretarias = setores.id_secretarias
+                INNER JOIN produtos ON produtos.id_produtos = impressoras.id_produtos''')
             contadores = query.consultar()
             return render_template("/contadores/contadores.html",
-                                ids = contadores,
+                                mes = mes,
                                 contadores=contadores)
             
     def criar_contador():

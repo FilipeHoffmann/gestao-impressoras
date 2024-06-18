@@ -78,6 +78,7 @@
                 <th scope="col">Cotas</th>
                 <th scope="col">Contador Inicial</th>
                 <th scope="col">ID Setores</th>
+                <th scope="col">ID Produtos</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
               </tr>
@@ -95,6 +96,7 @@
               <td>{{ impressora[7] }}</td>
               <td>{{ impressora[8] }}</td>
               <td>{{ impressora[9] }}</td>
+              <td>{{ impressora[10] }}</td>
               <td><a class="btn btn-warning" href="{{ url_for('editar_impressora', id_impressora=impressora[0]) }}" role="button">Editar</a></td>
               <td><a class="btn btn-danger" href="{{ url_for('excluir_impressora', id_impressora=impressora[0]) }}" role="button">Excluir</a></td>
             </tr>
