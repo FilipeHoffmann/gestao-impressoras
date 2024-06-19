@@ -75,9 +75,15 @@
                 <label for="">Contador Inicial:</label>
                 <input class="form-control" type="number" id="contador_inicial" name="contador_inicial" value="{{ impressora.contador_inicial }}">
 
-                <label for="id_setores">ID Setores:</label>
-                <input class="form-control" type="text" id="id_setores" name="id_setores" value="{{ impressora.id_setores }}" >
+                <label for="">Data Instalação:</label>
+                <input class="form-control" type="date" id="data_instalacao" name="data_instalacao" value="{{ impressora.data_instalacao }}">
 
+                <label for="id_setores">ID Setores:</label>
+                <Select name="id_setores" class="form-select">
+                  {% for setor in setores %}
+                    <option value="{{ setor[0] }}">{{ setor[1] }}</option>
+                  {% endfor %}
+                </Select>
                 <label for="">ID Produto:</label>
                 <Select name="id_produtos" class="form-select">
                   {% for produto in produtos %}

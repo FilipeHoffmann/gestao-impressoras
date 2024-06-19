@@ -82,9 +82,12 @@
               <tr>
                 <th scope="col">ID Contador</th>
                 <th scope="col">ID Impressora</th>
+                <th scope="col">Secretaria</th>
+                <th scope="col">Setor</th>
                 <th scope="col">Data da Coleta</th>
                 <th scope="col">Contador Coletado</th>
                 <th scope="col">Mês Referente</th>
+                <th scope="col">Proporção Mês</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
               </tr>
@@ -97,6 +100,9 @@
               <td>{{ contador[2] }}</td>
               <td>{{ contador[3] }}</td>
               <td>{{ contador[4] }}</td>
+              <td>{{ contador[5] }}</td>
+              <td>{{ contador[6] }}</td>
+              <td>{{ contador[7] }}</td>
               <td><a class="btn btn-warning" href="{{ url_for('editar_contador', id_contador=contador[0]) }}" role="button">Editar</a></td>
               <td><a class="btn btn-danger" href="{{ url_for('excluir_contador', id_contador=contador[0]) }}" role="button">Excluir</a></td>
             </tr>

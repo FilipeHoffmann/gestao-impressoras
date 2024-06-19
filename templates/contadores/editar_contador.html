@@ -47,13 +47,15 @@
       <div id="formulario" class="d-grid gap-4 col-3 mx-auto">
           <form method="POST" class="form-group">
               <label for="lote">ID Impressoras:</label>
-              <input type="text" id="id_impressoras" name="id_impressoras" value="{{ contador.id_impressoras }}" required><br>
+              <input type="text" class="form-control" id="id_impressoras" name="id_impressoras" value="{{ contador.id_impressoras }}" required>
               <label for="lote">Data Coleta:</label>
-              <input type="text" id="data_coleta" name="data_coleta" value="{{ contador.data_coleta }}" required><br>
+              <input type="date" class="form-control" id="data_coleta" name="data_coleta" value="{{ contador.data_coleta }}" required>
               <label for="lote">Contador Coletado:</label>
-              <input type="text" id="paginas_impressas" name="paginas_impressas" value="{{ contador.paginas_impressas }}" required><br>
+              <input type="text" class="form-control" id="paginas_impressas" name="paginas_impressas" value="{{ contador.paginas_impressas }}" required>
               <label for="lote">Mês Referente:</label>
-              <input type="text" id="mes_referente" name="mes_referente" value="{{ contador.mes_referente }}" required><br>
+              <input type="text" class="form-control" id="mes_referente" name="mes_referente" value="{{ contador.mes_referente }}" required>
+              <label for="lote">Proporção Mês:</label>
+              <input type="number" class="form-control" min="0" step="0.001" id="proporcao_mes" name="proporcao_mes" value="{{ contador.proporcao_mes }}" required>
 
               <div class="form-group button-container">
                   <button type="submit" class="btn btn-primary mb-3">Enviar</button>
