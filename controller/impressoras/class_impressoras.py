@@ -41,18 +41,11 @@ class class_impressoras:
         cotas = request.form['cotas']
         contador_inicial = request.form['contador_inicial']
         id_produtos = request.form['id_produtos']
-        if cotas == "" or cotas == "None":
-            update_query = f"""
-            UPDATE impressoras
-            SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', contador_inicial = '{contador_inicial}', id_produtos = '{id_produtos}'
-            WHERE id_impressoras = '{id_impressora}'
-            """
-        else:
-            update_query = f"""
-            UPDATE impressoras
-            SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', cotas = '{cotas}', contador_inicial = '{contador_inicial}'
-            WHERE id_impressoras = '{id_impressora}'
-            """
+        update_query = f"""
+        UPDATE impressoras
+        SET modelo = '{modelo}', marca = '{marca}', ip = '{ip}', localizacao = '{localizacao}', status = '{status}', tipo_impressora = '{tipo_impressora}', id_setores = '{id_setores}', cotas = '{cotas}', contador_inicial = '{contador_inicial}', id_produtos = '{id_produtos}'
+        WHERE id_impressoras = '{id_impressora}'
+        """
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
         return redirect(url_for('impressoras'))
             
@@ -73,15 +66,12 @@ class class_impressoras:
         cotas = request.form['cotas']
         contador_inicial = request.form['contador_inicial']
         id_produtos = request.form['id_produtos']
-
-        if id_setores == '' and cotas == '':
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, contador_inicial, id_produtos) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}","{tipo_impressora}","{contador_inicial}","{id_produtos}")').alterar_incluir_excluir()
-        elif id_setores == '':
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, cotas, contador_inicial, id_produtos) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}", "{cotas}", "{contador_inicial}","{id_produtos}")').alterar_incluir_excluir()
-        elif cotas == '':
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores, contador_inicial, id_produtos) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{contador_inicial}","{id_produtos}")').alterar_incluir_excluir()
-        else:
-            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores, cotas, contador_inicial) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{cotas}", "{contador_inicial}")').alterar_incluir_excluir()
+        
+        conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO impressoras(id_impressoras, modelo, marca, ip, localizacao, status, tipo_impressora, id_setores, cotas, contador_inicial, id_produtos) VALUES ("{id_impressora}","{modelo}","{marca}","{ip}","{localizacao}","{status}", "{tipo_impressora}","{id_setores}", "{cotas}", "{contador_inicial}", "{id_produtos}")').alterar_incluir_excluir()
+        #Criar o contador vazio
+        meses = ["JANEIRO","FEVEREIRO","MARÇO","ABRIL","MAIO","JUNHO","JULHO","AGOSTO","SETEMBRO","OUTUBRO","NOVEMBRO","DEZEMBRO"]
+        for i in range(len(meses)):
+            conector_banco_de_dados.conector_banco_de_dados(f'INSERT INTO contadores(id_impressoras, mes_referente) VALUES ("{id_impressora}", "{meses[i]}")').alterar_incluir_excluir()
         mensagem = "Impressora adicionada!"
         return render_template('/impressoras/criar_impressora.html',
                             mensagem = mensagem)

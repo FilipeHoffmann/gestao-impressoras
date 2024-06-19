@@ -44,17 +44,13 @@
           </div>
         </div>
       </nav>
-      <div id="formulario">
+      <div id="formulario" class="d-grid gap-4 col-3 mx-auto">
           <form method="POST" class="form-group">
               <label for="lote">ID Impressoras:</label>
               <input type="text" id="id_impressoras" name="id_impressoras" value="{{ contador.id_impressoras }}" required><br>
-              <label for="lote">ID Setores:</label>
-              <input type="text" id="id_setores" name="id_setores" value="{{ contador.id_setores }}" required><br>
-              <label for="lote">ID Produtos:</label>
-              <input type="text" id="id_produtos" name="id_produtos" value="{{ contador.id_produtos }}" required><br>
               <label for="lote">Data Coleta:</label>
               <input type="text" id="data_coleta" name="data_coleta" value="{{ contador.data_coleta }}" required><br>
-              <label for="lote">Paginas Impressas:</label>
+              <label for="lote">Contador Coletado:</label>
               <input type="text" id="paginas_impressas" name="paginas_impressas" value="{{ contador.paginas_impressas }}" required><br>
               <label for="lote">Mês Referente:</label>
               <input type="text" id="mes_referente" name="mes_referente" value="{{ contador.mes_referente }}" required><br>

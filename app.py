@@ -180,7 +180,7 @@ def excluir_setor(id_setor):
 def contadores():
     if request.method == "GET":
         mes = request.args.get('mes')
-        if mes == "TODOS":
+        if mes == "None":
             return class_contadores.class_contadores.contadores()
         else:
             return class_contadores.class_contadores.contadores(mes=mes)
@@ -222,4 +222,4 @@ def faturamento():
             return class_faturamento.class_faturamento.exportar_planilha(mes=mes)
     
 if __name__ == "__main__":
-    app.run(debug=True,host='192.168.0.159')
+    app.run(debug=True)

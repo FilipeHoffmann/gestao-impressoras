@@ -5,14 +5,16 @@ class class_contadores:
     @staticmethod
     def contadores(mes):
         if request.method == "GET":
-            print(mes)
             if mes == None:
                 query = conector_banco_de_dados.conector_banco_de_dados(f'''
-                SELECT impressoras.id_impressoras, impressoras.modelo, secretarias.nome, setores.nome_setor, produtos.descricao
-                FROM impressoras
-                INNER JOIN setores ON setores.id_setores = impressoras.id_setores
-                INNER JOIN secretarias ON secretarias.id_secretarias = setores.id_secretarias
-                INNER JOIN produtos ON produtos.id_produtos = impressoras.id_produtos''')
+                SELECT *
+                FROM contadores''')
+            else:
+                query = conector_banco_de_dados.conector_banco_de_dados(f'''
+                SELECT *
+                FROM contadores
+                WHERE "{mes}" = mes_referente''')
+                
             contadores = query.consultar()
             return render_template("/contadores/contadores.html",
                                 mes = mes,
@@ -48,14 +50,12 @@ class class_contadores:
         
     def editar_contador(id_contador):
         id_impressoras = request.form["id_impressoras"]
-        id_setores = request.form["id_setores"]
-        id_produtos = request.form["id_produtos"]
         data_coleta = request.form["data_coleta"]
         paginas_impressas = request.form["paginas_impressas"]
         mes_referente = request.form["mes_referente"]
         update_query = f"""
             UPDATE contadores
-            SET id_impressoras = '{id_impressoras}', id_setores = '{id_setores}', id_produtos = '{id_produtos}', data_coleta = '{data_coleta}', paginas_impressas = '{paginas_impressas}', mes_referente = '{mes_referente}'
+            SET id_impressoras = '{id_impressoras}', data_coleta = '{data_coleta}', paginas_impressas = '{paginas_impressas}', mes_referente = '{mes_referente}'
             WHERE id_contadores = '{id_contador}'
         """
         conector_banco_de_dados.conector_banco_de_dados(update_query).alterar_incluir_excluir()
@@ -68,11 +68,9 @@ class class_contadores:
                 contador = contador[0]
                 contador_dict = {
                     'id_impressoras': contador[1],
-                    'id_setores': contador[2],
-                    'id_produtos': contador[3],
-                    'data_coleta': contador[4],
-                    'paginas_impressas': contador[5],
-                    'mes_referente': contador[6]
+                    'data_coleta': contador[2],
+                    'paginas_impressas': contador[3],
+                    'mes_referente': contador[4]
                 }
                 return render_template('contadores/editar_contador.html', contador=contador_dict)
     
