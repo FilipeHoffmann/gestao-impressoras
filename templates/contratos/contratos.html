@@ -71,12 +71,12 @@
               </tr>
           </thead>
           <tbody>
-            {% for contrato in contratos %}
+            {% for contratos in contrato %}
             <tr>
-              <th scope="row">{{ contrato[0] }}</td>
-              <td>{{ contrato[1] }}</td>
-              <td>{{ contrato[2] }}</td>
-              <td>{{ contrato[3] }}</td>
+              <th scope="row">{{ contratos[0] }}</td>
+              <td>{{ contratos[1] }}</td>
+              <td>{{ contratos[2] }}</td>
+              <td>{{ contratos[3] }}</td>
               <td><a class="btn btn-warning" href="{{ url_for('editar_contrato', id_contrato=contrato[0]) }}" role="button">Editar</a></td>
               <td><a class="btn btn-danger" href="{{ url_for('excluir_contrato', id_contrato=contrato[0]) }}" role="button">Excluir</a></td>
             </tr>

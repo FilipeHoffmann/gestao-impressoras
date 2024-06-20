@@ -5,7 +5,6 @@ from controller.produtos import class_produtos
 from controller.impressoras import class_impressoras
 from controller.secretarias import class_secretarias
 from controller.setores import class_setores
-from controller.cotas import class_cotas
 from controller.contadores import class_contadores
 from controller.faturamento import class_faturamento
 
@@ -123,34 +122,6 @@ def excluir_impressora(id_impressora):
     if request.method == "GET":
         return class_impressoras.class_impressoras.excluir_impressora(id_impressora)
     
-#Cotas
-
-@app.route('/impressoras/cotas', methods=['GET', 'POST'])
-def cotas():
-    if request.method == "GET":
-        return class_cotas.class_cotas.cotas()
-    elif request.method == "POST":
-        return class_cotas.class_cotas.criar_cota()
-    
-@app.route('/impressoras/cotas/criar', methods=['GET', 'POST'])
-def criar_cota():
-    if request.method == "GET":
-        return class_cotas.class_cotas.obter_formulario_cota()
-    elif request.method == "POST":
-        return class_cotas.class_cotas.criar_cota()
-
-@app.route('/impressoras/cotas/editar/<int:id_cota>', methods=['GET', 'POST'])
-def editar_cota(id_cota):
-    if request.method == "GET":
-        return class_cotas.class_cotas.obter_cota(id_cota)
-    elif request.method == "POST":
-        return class_cotas.class_cotas.editar_cota(id_cota)
-
-@app.route('/impressoras/cota/excluir/<int:id_cota>', methods=["GET"])
-def excluir_cota(id_cota):
-    if request.method == "GET":
-        return class_cotas.class_cotas.excluir_cota(id_cota)
-    
 #Secretarias
 
 @app.route('/secretarias',methods=['GET'])
@@ -205,10 +176,14 @@ def excluir_setor(id_setor):
     
 #Contadores
 
-@app.route('/contadores',methods=['GET'])
+@app.route("/contadores", methods=['GET','POST'])
 def contadores():
     if request.method == "GET":
-        return class_contadores.class_contadores.contadores()
+        mes = request.args.get('mes')
+        if mes == "None":
+            return class_contadores.class_contadores.contadores()
+        else:
+            return class_contadores.class_contadores.contadores(mes=mes)
     
 @app.route("/contadores/criar", methods=['GET','POST'])
 def criar_contador():
@@ -247,4 +222,4 @@ def faturamento():
             return class_faturamento.class_faturamento.exportar_planilha(mes=mes)
     
 if __name__ == "__main__":
-    app.run(debug=True,host='192.168.0.159')
+    app.run(debug=True)
