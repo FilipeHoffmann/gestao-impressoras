@@ -9,13 +9,15 @@ header {
     padding: 20px 0;
 }
 
-.titulo-cabecalho h1 {
-    margin: 0;
-    text-align: center;
+.titulo-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar {
     background-color: #0056b3;
+    margin: 0 0 20px;
 }
 
 .navbar-nav .nav-link {
@@ -35,20 +37,29 @@ header {
     background-color: #0056b3;
 }
 
-footer {
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    bottom: 0;
-    width: 100%;
+#container-faturamento {
+    padding: 20px;
+}
+
+#container-meses {
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .table {
+    font-size: small;
     width: 100%;
+    margin: 20px auto;
     border-collapse: collapse;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+}
+
+.table tbody tr:hover {
+    background-color: #8b8b8b;
 }
 
 .table thead {
@@ -63,6 +74,6 @@ footer {
     border-bottom: 1px solid #ddd;
 }
 
-.table tbody tr:hover {
-    background-color: #8b8b8b;
+#container-total {
+    text-align: center;
 }
