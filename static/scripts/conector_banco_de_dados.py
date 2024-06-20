@@ -6,7 +6,7 @@ class conector_banco_de_dados:
             host="localhost",
             user="root",
             password="123321",
-            database="controleimpressora"
+            database="mydb"
         )
         self.cursor = self.conector_sql.cursor()
         self.query = query

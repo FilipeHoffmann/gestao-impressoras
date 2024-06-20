@@ -4,11 +4,10 @@ from static.scripts import conector_banco_de_dados
 class class_contratos:
     @staticmethod
     def contratos():
-        query = conector_banco_de_dados.conector_banco_de_dados("SELECT * FROM contratos ORDER BY id_contratos DESC")
+        query = conector_banco_de_dados.conector_banco_de_dados("SELECT * FROM contrato")
         lista_contratos = query.consultar()
         return render_template('/contratos/contratos.html',
-                            contratos = lista_contratos,
-                            ids=lista_contratos)
+                            contratos = lista_contratos)
 
     def obter_contrato(id_contrato):
         contrato = conector_banco_de_dados.conector_banco_de_dados(f"SELECT * FROM contratos WHERE id_contratos = {id_contrato}").consultar()
