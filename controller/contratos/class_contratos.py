@@ -4,7 +4,7 @@ from static.scripts import conector_banco_de_dados
 class class_contratos:
     @staticmethod
     def contratos():
-        query = conector_banco_de_dados.conector_banco_de_dados("SELECT * FROM contrato")
+        query = conector_banco_de_dados.conector_banco_de_dados("SELECT id_contrato, DATE_FORMAT(data_inicial, '%d-%m-%Y') as data_inicial, DATE_FORMAT(data_final, '%d-%m-%Y') as data_final, DATE_FORMAT(data_final_atual, '%d-%m-%Y') as data_final_atual FROM contrato;")
         lista_contratos = query.consultar()
         return render_template('/contratos/contratos.html',
                             contrato = lista_contratos)
