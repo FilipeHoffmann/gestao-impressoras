@@ -10,7 +10,7 @@
 <body>
     <header>
         <div class="titulo-cabecalho">
-          <h1>Criar Contrato</h1>
+          <h1>Criar Produtos</h1>
         </div>
       </header>
 
@@ -33,7 +33,7 @@
                   <a class="nav-link" href="">Impressoras</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="">Secretarias</a>
+                  <a class="nav-link" href="">produtos</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="">Contadores</a>
@@ -47,14 +47,30 @@
         </nav>
         <div id="formulario" class="container">
             <Form method="post" class="form-group">
-                <label for="">ID Contrato:</label>
-                <input class="form-control" type="number" name="id_contrato" required>
-                <label for="">Data Inicial:</label>
-                <input class="form-control" type="date" name="data_inicial" required>
-                <label for="">Data Final:</label>
-                <input class="form-control" type="date"  name="data_final" required>
-                <label for="">Data Final Atual:</label>
-                <input class="form-control" type="date"  name="data_final_atual" required>
+                <label for="">ID Produtos:</label>
+                <input class="form-control" type="number" name="id_produto" required>
+                <label for="">Descrição:</label>
+                <input class="form-control" type="text" name="descricao" required>
+                <label for="">Franquia P/B:</label>
+                <input class="form-control" type="number" name="franquia_pb" required>
+                <label for="">Franquia Color:</label>
+                <input class="form-control" type="number" name="franquia_color" required>
+                <label for="">Tipo:</label>
+                <select class="form-control" type="text" name="tipo" required>
+                  <option value="IMPRESSORA">IMPRESSORA</option>
+                  <option value="MULTIFUNCIONAL MONOCROMÁTICA">MULTIFUNCIONAL MONOCROMÁTICA</option>
+                  <option value="MULTIFUNCIONAL MULTICOLOR">MULTIFUNCIONAL MULTICOLOR</option>
+                </select>
+                <label for="">Cópia/Locação:</label>
+                <select class="form-control" type="text" name="copia_locacao" required>
+                  <option value="CÓPIA">CÓPIA</option>
+                  <option value="LOCAÇÃO">LOCAÇÃO</option>
+                </select>
+                <label for="">Color:</label>
+                <select class="form-control" type="text" name="color" required>
+                  <option value="NÃO">NÃO</option>
+                  <option value="SIM">SIM</option>
+                </select>
                 <br>
                 <div class="form-group d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary mb-3">Enviar</button>
@@ -64,7 +80,7 @@
         
         <div class="container-botao">
             <div class="d-grid gap-4 col-3 mx-auto">
-              <a class="btn btn-primary " href=" {{ url_for('contratos') }}" role="button">Voltar</a>
+              <a class="btn btn-primary " href=" {{ url_for('produtos') }}" role="button">Voltar</a>
             </div>
         </div>
     </main>
