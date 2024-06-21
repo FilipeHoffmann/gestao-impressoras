@@ -24,22 +24,22 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('contratos') }}">Contratos</a>
+                <a class="nav-link" href="">Contratos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('produtos') }}">Produtos</a>
+                <a class="nav-link" href="">Produtos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('impressoras') }}">Impressoras</a>
+                <a class="nav-link" href="">Impressoras</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('secretarias') }}">Secretarias</a>
+                <a class="nav-link" href="">Secretarias</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('contadores') }}">Contadores</a>
+                <a class="nav-link" href="">Contadores</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('faturamento') }}">Faturamento</a>
+                <a class="nav-link" href="">Faturamento</a>
               </li>
             </ul>
           </div>
@@ -54,7 +54,7 @@
       <br>
       <div id="botao-aditivo">
         <div class="d-grid gap-4 col-3 mx-auto">
-          <a class="btn btn-primary " href="{{ url_for('aditivos') }}" role="button">Aditivo</a>
+          <a class="btn btn-primary " href="" role="button">Aditivo</a>
         </div>
       </div>
 
@@ -77,8 +77,8 @@
               <td>{{ contratos[1] }}</td>
               <td>{{ contratos[2] }}</td>
               <td>{{ contratos[3] }}</td>
-              <td><a class="btn btn-warning" href="{{ url_for('editar_contrato', id_contrato=contrato[0]) }}" role="button">Editar</a></td>
-              <td><a class="btn btn-danger" href="{{ url_for('excluir_contrato', id_contrato=contrato[0]) }}" role="button">Excluir</a></td>
+              <td><a class="btn btn-warning" href="{{ url_for('editar_contrato', id_contrato=contratos[0]) }}" role="button">Editar</a></td>
+              <td><a class="btn btn-danger" href="{{ url_for('excluir_contrato', id_contrato=contratos[0]) }}" role="button">Excluir</a></td>
             </tr>
             {% endfor %}
           </tbody>
