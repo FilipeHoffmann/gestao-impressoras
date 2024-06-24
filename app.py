@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from controller.contratos import class_contratos
 from controller.secretarias import class_secretarias
 from controller.produtos import class_produtos
+from controller.itens import class_itens
 
 app = Flask(__name__)
 
@@ -85,6 +86,11 @@ def criar_produto():
         return class_produtos.class_produtos.criar_produto()
     elif request.method == "GET":
         return class_produtos.class_produtos.obter_formulario_produto()
+    
+@app.route('/itens', methods=['GET','POST'])
+def itens():
+    if request.method == "GET":
+        return class_itens.class_itens.itens()
     
 if __name__ == "__main__":
     app.run(debug=True, host="192.168.0.159")
