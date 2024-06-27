@@ -7,7 +7,7 @@ router.use(express.json());
 router.get('/', async (req, res) => {
     try {
         const connection = await createConnection();
-        const [results] = await connection.execute('SELECT * FROM contratos');
+        const [results] = await connection.execute("SELECT id_contrato, DATE_FORMAT(data_inicial, '%d-%m-%Y') AS data_inicial, DATE_FORMAT(data_final, '%d-%m-%Y') AS data_final, DATE_FORMAT(data_final_atual, '%d-%m-%Y') AS data_final_atual FROM `gestao-impressoras`.contratos;");
         res.json({ results });
     } catch (error) {
         console.error('Error executing query', error);
