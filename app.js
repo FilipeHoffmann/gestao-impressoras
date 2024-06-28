@@ -8,6 +8,9 @@ const aditivosRoutes = require('./api/aditivos');
 const aditivos_itensRoutes = require('./api/aditivos_itens');
 const aditivos_excedentesRoutes = require('./api/aditivos_excedentes');
 const excedentesRoutes = require('./api/excedentes');
+const impressorasRoutes = require('./api/impressoras');
+const instalacaoRoutes = require('./api/instalacao');
+const contadorRoutes = require('./api/contadores');
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,9 +22,12 @@ app.use('/aditivos', aditivosRoutes);
 app.use('/aditivos_itens', aditivos_itensRoutes);
 app.use('/aditivos_excedentes', aditivos_excedentesRoutes);
 app.use('/excedentes', excedentesRoutes);
+app.use('/impressoras', impressorasRoutes);
+app.use('/instalacao', instalacaoRoutes);
+app.use('/contadores', contadorRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    res.send('<h1>Gestão Impressoras</h1>');
 });
 
 app.listen(PORT, () => {
