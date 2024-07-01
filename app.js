@@ -31,7 +31,7 @@ app.use('/instalacao', instalacaoRoutes);
 app.use('/contadores', contadorRoutes);
 
 app.get('/', (req, res) => {
-    res.send('<h1>Gestão Impressoras</h1>');
+    res.send('<h1>API Gestão Impressoras</h1>');
 });
 
 app.listen(PORT, () => {
