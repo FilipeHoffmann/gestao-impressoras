@@ -21,7 +21,7 @@ function ContractsPage() {
 
     const fetchContracts = async () => {
         try {
-            const response = await fetch('http://192.168.0.159:5000/contratos');
+            const response = await fetch('http://localhost:5000/contratos');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -41,7 +41,7 @@ function ContractsPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://192.168.0.159:5000/contratos', {
+            const response = await fetch('http://localhost:5000/contratos', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ function ContractsPage() {
 
     const handleSave = async (updatedContract) => {
         try {
-            const response = await fetch(`http://192.168.0.159:5000/contratos/${updatedContract.id_contrato}`, {
+            const response = await fetch(`http://localhost:5000/contratos/${updatedContract.id_contrato}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ function ContractsPage() {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://192.168.0.159:5000/contratos/${id}`, {
+            const response = await fetch(`http://localhost:5000/contratos/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {

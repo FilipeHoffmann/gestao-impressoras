@@ -6,7 +6,7 @@ function ContractList({ contracts, handleEdit, handleDelete }) {
         <ul>
             {contracts.map(contract => (
                 <li key={contract.id_contrato}>
-                    {contract.id_contrato} - {contract.data_inicial} até {contract.data_final} / {contract.data_final_atual}
+                    ID: {contract.id_contrato} - Data Inicial: {contract.data_inicial} até {contract.data_final} / Data Final Atual: {contract.data_final_atual}
                     <button onClick={() => handleEdit(contract)}>Editar</button>
                     <button onClick={() => handleDelete(contract.id_contrato)}>Excluir</button>
                 </li>
