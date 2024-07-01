@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
     try {
         const connection = await createConnection();
         const [results] = await connection.execute("SELECT * FROM aditivos");
-        res.json({ results });
+        res.json(results);
     } catch (error) {
         console.error('Error executing query', error);
         res.status(500).send('Internal Server Error');

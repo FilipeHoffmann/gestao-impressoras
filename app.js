@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const contratosRoutes = require('./api/contratos');
 const secretariasRoutes = require('./api/secretarias');
 const produtosRoutes = require('./api/produtos');
@@ -12,7 +13,10 @@ const impressorasRoutes = require('./api/impressoras');
 const instalacaoRoutes = require('./api/instalacao');
 const contadorRoutes = require('./api/contadores');
 
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+app.use(express.json());
+
+const PORT = process.env.PORT || 5000;
 
 app.use('/contratos', contratosRoutes);
 app.use('/secretarias', secretariasRoutes);
